@@ -4,10 +4,21 @@ public abstract class Weapon {
     private String name;
     private Characters characters;
 
+
+
     public Weapon(String name, Characters characters) {
         this.name = name;
         this.characters = characters;
     }
+
+
+//    public DamageCharacter oneAttack(){
+//        DamageCharacter d = characters.getDamageList();
+//
+//        d.getDamageList()
+//
+//        return d;
+//    }
 
     public String getName() {
         return name;

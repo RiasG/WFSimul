@@ -3,20 +3,25 @@ package weapon;
 public abstract class Characters {
     private double attackSpeed;
     private double disposition;
-    private Damage damageList;
+    private DamageCharacter damageCharacterList;
     private double criticalChance;
     private double criticalMultiplier;
     private double statusChance;
-
     private NoiseLevel noiseLevel;
 
-
-    public Characters(double attackSpeed, Damage damageList, double criticalChance, double criticalMultiplier, double statusChance) {
+    public Characters(double attackSpeed, double disposition, DamageCharacter damageCharacterList,
+                      double criticalChance, double criticalMultiplier,
+                      double statusChance, NoiseLevel noiseLevel) {
         this.attackSpeed = attackSpeed;
-        this.damageList = damageList;
+        this.disposition = disposition;
+        this.damageCharacterList = damageCharacterList;
         this.criticalChance = criticalChance;
         this.criticalMultiplier = criticalMultiplier;
         this.statusChance = statusChance;
+        this.noiseLevel = noiseLevel;
+    }
+
+    public Characters() {
     }
 
     public double getAttackSpeed() {
@@ -35,20 +40,12 @@ public abstract class Characters {
         this.disposition = disposition;
     }
 
-    public Damage getDamageList() {
-        return damageList;
+    public DamageCharacter getDamageCharacterList() {
+        return damageCharacterList;
     }
 
-    public void setDamageList(Damage damageList) {
-        this.damageList = damageList;
-    }
-
-    public NoiseLevel getNoiseLevel() {
-        return noiseLevel;
-    }
-
-    public void setNoiseLevel(NoiseLevel noiseLevel) {
-        this.noiseLevel = noiseLevel;
+    public void setDamageCharacterList(DamageCharacter damageCharacterList) {
+        this.damageCharacterList = damageCharacterList;
     }
 
     public double getCriticalChance() {
@@ -73,5 +70,13 @@ public abstract class Characters {
 
     public void setStatusChance(double statusChance) {
         this.statusChance = statusChance;
+    }
+
+    public NoiseLevel getNoiseLevel() {
+        return noiseLevel;
+    }
+
+    public void setNoiseLevel(NoiseLevel noiseLevel) {
+        this.noiseLevel = noiseLevel;
     }
 }
