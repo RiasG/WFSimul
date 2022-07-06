@@ -11,6 +11,9 @@ public abstract class Characters {
     private double criticalMultiplier;
     private double statusChance;
 
+    private NoiseLevel noiseLevel;
+
+
     public Characters(double attackSpeed, LinkedList<Damage> damageList, double criticalChance, double criticalMultiplier, double statusChance) {
         this.attackSpeed = attackSpeed;
         this.damageList = damageList;

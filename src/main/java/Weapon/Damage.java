@@ -1,13 +1,23 @@
 package Weapon;
 
+import java.util.HashMap;
+
 public class Damage {
     private double amountDamage;
     private DamageType damageType;
 
-    public Damage(double amountDamage, DamageType damageType) {
+    private HashMap<Double, DamageType> damageBox;
 
-        this.amountDamage = amountDamage;
-        this.damageType = damageType;
 
+    public HashMap<Double, DamageType> getDamageBox() {
+        return damageBox;
+    }
+
+    public void setDamageBox(HashMap<Double, DamageType> damageBox) {
+        this.damageBox = damageBox;
+    }
+
+    public Damage(HashMap<Double, DamageType> damageBox) {
+        this.damageBox = damageBox;
     }
 }
