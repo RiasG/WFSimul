@@ -1,13 +1,16 @@
-package Weapon;
-
-import java.util.LinkedList;
+package weapon;
 
 public class CharactersPrimary extends Characters{
     private double multiShot;
+    private double projectileSpeed;
+    private double reloadSpeed;
+    private int magazineAmmo;
+    private int fullAmmo;
 
 
-    public CharactersPrimary(double attackSpeed, LinkedList<Damage> damageList, double criticalChance,
-                             double criticalMultiplier, double statusChance, double multiShot) {
+    public CharactersPrimary(double attackSpeed, Damage damageList, double criticalChance,
+                             double criticalMultiplier, double statusChance, double multiShot
+    ) {
         super(attackSpeed, damageList, criticalChance, criticalMultiplier, statusChance);
         this.multiShot = multiShot;
     }

@@ -1,4 +1,4 @@
-package Weapon;
+package weapon;
 
 public abstract class Weapon {
     private String name;

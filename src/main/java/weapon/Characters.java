@@ -1,12 +1,9 @@
-package Weapon;
-
-import java.util.LinkedList;
+package weapon;
 
 public abstract class Characters {
     private double attackSpeed;
     private double disposition;
-
-    private LinkedList<Damage> damageList;
+    private Damage damageList;
     private double criticalChance;
     private double criticalMultiplier;
     private double statusChance;
@@ -14,7 +11,7 @@ public abstract class Characters {
     private NoiseLevel noiseLevel;
 
 
-    public Characters(double attackSpeed, LinkedList<Damage> damageList, double criticalChance, double criticalMultiplier, double statusChance) {
+    public Characters(double attackSpeed, Damage damageList, double criticalChance, double criticalMultiplier, double statusChance) {
         this.attackSpeed = attackSpeed;
         this.damageList = damageList;
         this.criticalChance = criticalChance;
@@ -30,12 +27,28 @@ public abstract class Characters {
         this.attackSpeed = attackSpeed;
     }
 
-    public LinkedList<Damage> getDamageList() {
+    public double getDisposition() {
+        return disposition;
+    }
+
+    public void setDisposition(double disposition) {
+        this.disposition = disposition;
+    }
+
+    public Damage getDamageList() {
         return damageList;
     }
 
-    public void setDamageList(LinkedList<Damage> damageList) {
+    public void setDamageList(Damage damageList) {
         this.damageList = damageList;
+    }
+
+    public NoiseLevel getNoiseLevel() {
+        return noiseLevel;
+    }
+
+    public void setNoiseLevel(NoiseLevel noiseLevel) {
+        this.noiseLevel = noiseLevel;
     }
 
     public double getCriticalChance() {

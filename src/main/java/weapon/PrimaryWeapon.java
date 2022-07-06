@@ -1,4 +1,4 @@
-package Weapon;
+package weapon;
 
 public class PrimaryWeapon extends Weapon{
 

@@ -1,4 +1,4 @@
-package Weapon;
+package weapon;
 
 import java.util.LinkedList;
 
@@ -25,7 +25,7 @@ public class CharactersMelee extends Characters{
     private double followThrough;
 
 
-    public CharactersMelee(double attackSpeed, LinkedList<Damage> damageList, double criticalChance,
+    public CharactersMelee(double attackSpeed, Damage damageList, double criticalChance,
                            double criticalMultiplier, double statusChance) {
         super(attackSpeed, damageList, criticalChance, criticalMultiplier, statusChance);
     }

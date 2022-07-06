@@ -1,4 +1,4 @@
-package Weapon;
+package weapon;
 
 public class MeleeWeapon extends Weapon{
     public MeleeWeapon(String name, Characters characters) {
