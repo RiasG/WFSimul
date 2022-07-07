@@ -24,6 +24,8 @@ public abstract class Characters {
     public Characters() {
     }
 
+
+
     public double getAttackSpeed() {
         return attackSpeed;
     }
@@ -40,12 +42,12 @@ public abstract class Characters {
         this.disposition = disposition;
     }
 
-    public DamageList getDamageCharacterList() {
+    public DamageList getDamageList() {
         return damageList;
     }
 
-    public void setDamageCharacterList(DamageList damageListList) {
-        this.damageList = damageListList;
+    public void setDamageList(DamageList damageList) {
+        this.damageList = damageList;
     }
 
     public double getCriticalChance() {

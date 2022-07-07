@@ -8,6 +8,9 @@ public class CharactersPrimary extends Characters{
     private int fullAmmo;
 
 
+    public CharactersPrimary() {
+    }
+
     public CharactersPrimary(double attackSpeed, double disposition, DamageList damageListList,
                              double criticalChance, double criticalMultiplier,
                              double statusChance, NoiseLevel noiseLevel, double multiShot,
@@ -20,5 +23,43 @@ public class CharactersPrimary extends Characters{
         this.fullAmmo = fullAmmo;
     }
 
+    public double getMultiShot() {
+        return multiShot;
+    }
 
+    public void setMultiShot(double multiShot) {
+        this.multiShot = multiShot;
+    }
+
+    public double getProjectileSpeed() {
+        return projectileSpeed;
+    }
+
+    public void setProjectileSpeed(double projectileSpeed) {
+        this.projectileSpeed = projectileSpeed;
+    }
+
+    public double getReloadSpeed() {
+        return reloadSpeed;
+    }
+
+    public void setReloadSpeed(double reloadSpeed) {
+        this.reloadSpeed = reloadSpeed;
+    }
+
+    public int getMagazineAmmo() {
+        return magazineAmmo;
+    }
+
+    public void setMagazineAmmo(int magazineAmmo) {
+        this.magazineAmmo = magazineAmmo;
+    }
+
+    public int getFullAmmo() {
+        return fullAmmo;
+    }
+
+    public void setFullAmmo(int fullAmmo) {
+        this.fullAmmo = fullAmmo;
+    }
 }

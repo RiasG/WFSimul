@@ -1,18 +1,63 @@
 package weapon;
 
+import java.util.LinkedList;
+
 public class Projectile {
     private DamageList damageList;
-    private double statusMulti;
     private double critMulti;
-    private DamageType damageWithStatus;
+    private double critChance;
+    private double statusChance;
 
+    //private DamageType damageWithStatus;
+    //private double statusMulti;
 
-    public Projectile(DamageList damageList, double statusMulti, double critMulti, DamageType damageWithStatus) {
-        this.damageList = damageList;
-        this.statusMulti = statusMulti;
-        this.critMulti = critMulti;
-        this.damageWithStatus = damageWithStatus;
+    public Projectile() {
     }
 
+    public Projectile(DamageList damageList, double critMulti, double critChance, double statusChance) {
+        this.damageList = damageList;
+        this.critMulti = critMulti;
+        this.critChance = critChance;
+        this.statusChance = statusChance;
+    }
 
+    public DamageList getDamageList() {
+        return damageList;
+    }
+
+    public void setDamageList(DamageList damageList) {
+        this.damageList = damageList;
+    }
+
+   /* public double getStatusMulti() {
+        return statusMulti;
+    }
+
+    public void setStatusMulti(double statusMulti) {
+        this.statusMulti = statusMulti;
+    }*/
+
+    public double getCritMulti() {
+        return critMulti;
+    }
+
+    public void setCritMulti(double critMulti) {
+        this.critMulti = critMulti;
+    }
+
+    public double getCritChance() {
+        return critChance;
+    }
+
+    public void setCritChance(double critChance) {
+        this.critChance = critChance;
+    }
+
+    public double getStatusChance() {
+        return statusChance;
+    }
+
+    public void setStatusChance(double statusChance) {
+        this.statusChance = statusChance;
+    }
 }
