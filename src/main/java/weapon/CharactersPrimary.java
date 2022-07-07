@@ -8,11 +8,11 @@ public class CharactersPrimary extends Characters{
     private int fullAmmo;
 
 
-    public CharactersPrimary(double attackSpeed, double disposition, DamageCharacter damageCharacterList,
+    public CharactersPrimary(double attackSpeed, double disposition, DamageList damageListList,
                              double criticalChance, double criticalMultiplier,
                              double statusChance, NoiseLevel noiseLevel, double multiShot,
                              double projectileSpeed, double reloadSpeed, int magazineAmmo, int fullAmmo) {
-        super(attackSpeed, disposition, damageCharacterList, criticalChance, criticalMultiplier, statusChance, noiseLevel);
+        super(attackSpeed, disposition, damageListList, criticalChance, criticalMultiplier, statusChance, noiseLevel);
         this.multiShot = multiShot;
         this.projectileSpeed = projectileSpeed;
         this.reloadSpeed = reloadSpeed;

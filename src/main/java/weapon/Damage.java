@@ -2,7 +2,6 @@ package weapon;
 
 public class Damage {
     private double amountDamage;
-
     private DamageType damageType;
 
     public Damage(double amountDamage, DamageType damageType) {

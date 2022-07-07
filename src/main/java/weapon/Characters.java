@@ -3,18 +3,18 @@ package weapon;
 public abstract class Characters {
     private double attackSpeed;
     private double disposition;
-    private DamageCharacter damageCharacterList;
+    private DamageList damageList;
     private double criticalChance;
     private double criticalMultiplier;
     private double statusChance;
     private NoiseLevel noiseLevel;
 
-    public Characters(double attackSpeed, double disposition, DamageCharacter damageCharacterList,
+    public Characters(double attackSpeed, double disposition, DamageList damageList,
                       double criticalChance, double criticalMultiplier,
                       double statusChance, NoiseLevel noiseLevel) {
         this.attackSpeed = attackSpeed;
         this.disposition = disposition;
-        this.damageCharacterList = damageCharacterList;
+        this.damageList = damageList;
         this.criticalChance = criticalChance;
         this.criticalMultiplier = criticalMultiplier;
         this.statusChance = statusChance;
@@ -40,12 +40,12 @@ public abstract class Characters {
         this.disposition = disposition;
     }
 
-    public DamageCharacter getDamageCharacterList() {
-        return damageCharacterList;
+    public DamageList getDamageCharacterList() {
+        return damageList;
     }
 
-    public void setDamageCharacterList(DamageCharacter damageCharacterList) {
-        this.damageCharacterList = damageCharacterList;
+    public void setDamageCharacterList(DamageList damageListList) {
+        this.damageList = damageListList;
     }
 
     public double getCriticalChance() {
