@@ -3,26 +3,39 @@ package weapon;
 
 public class CharactersMelee extends Characters{
 
-    //Heavy damage characters
+    /**
+     * Heavy damage characters
+     */
     private DamageList heavyDamageList;
     private DamageList slamHeavyDamageList;
     private DamageList radiaHeavyDamageList;
     private double slamHeavyRadius;
+
+    /**
+     * Время подготовки тяжелой атаки
+     */
     private double windUp;
-    //slam light damage characters
+
+    /**
+     * Slam light damage characters
+     */
     private DamageList slamDamageList;
     private double slamRadius;
     private DamageList radialDamageList;
     private DamageList slideDamageList;
     private int blockAngle;
     private int comboDuration;
+
+    /**
+     * Уменьшение урона при попадании одной аттаки по последующим целям
+     */
     private double followThrough;
 
-    public CharactersMelee(double attackSpeed, double disposition, DamageList damageList,
+    public CharactersMelee(String name, double attackSpeed, double disposition, DamageList damageList,
                            double criticalChance, double criticalMultiplier,
                            double statusChance, NoiseLevel noiseLevel, double slamHeavyRadius,
                            double windUp, double slamRadius, int blockAngle, int comboDuration, double followThrough) {
-        super(attackSpeed, disposition, damageList, criticalChance, criticalMultiplier, statusChance, noiseLevel);
+        super(name, attackSpeed, disposition, damageList, criticalChance, criticalMultiplier, statusChance, noiseLevel);
         this.slamHeavyRadius = slamHeavyRadius;
         this.windUp = windUp;
         this.slamRadius = slamRadius;

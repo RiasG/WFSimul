@@ -1,27 +1,16 @@
 package weapon;
 
 public abstract class Weapon {
-    private String name;
+
     private Characters characters;
 
-
-    public Weapon(String name, Characters characters) {
-        this.name = name;
+    public Weapon( Characters characters) {
         this.characters = characters;
-
-
     }
-
 
     public abstract Attack oneAttack();
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Characters getCharacters() {
         return characters;
@@ -34,12 +23,9 @@ public abstract class Weapon {
     @Override
     public String toString() {
         return "Weapon{" +
-                "name='" + name + '\'' +
+                "name='" +  '\'' +
                 ", characters=" + characters +
                 '}';
     }
 
-    protected void setAttack(AttackCreator attackCreator) {
-
-    }
 }

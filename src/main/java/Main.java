@@ -1,17 +1,21 @@
+
 import weapon.*;
 
 
 
 public class Main {
     public static void main(String[] args) {
-        Characters characters = new CharactersPrimary(2,45, new DamageList(), 0.3,2,0.4,NoiseLevel.NOISE, 1,0.5,30,500);
+        Characters characters = new CharactersPrimary("Karak", 2,45, new DamageList(), 0.3,2,0.4,
+                NoiseLevel.NOISE, 1,0.5,30,500);
         characters.getDamageList().add(new Damage(23,DamageType.CORROSIVE));
-        Weapon weapon = new PrimaryWeapon("Karak", characters);
+        Weapon weapon = new PrimaryWeapon(characters);
 
 
         System.out.println(weapon.oneAttack());
         Attack attack = weapon.oneAttack();
+
         System.out.println(attack.getDamageList().getFirst().getDamageType());
+        System.out.println(((AttackPrimary)attack).getMultiShot());
 
         //DamageList damageList = new DamageList();
 

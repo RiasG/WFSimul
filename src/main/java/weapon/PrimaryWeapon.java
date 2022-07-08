@@ -2,22 +2,17 @@ package weapon;
 
 public class PrimaryWeapon extends Weapon{
 
-
-
-    public PrimaryWeapon(String name, Characters characters) {
-        super(name, characters);
+    public PrimaryWeapon(Characters characters) {
+        super(characters);
     }
 
     @Override
     public Attack oneAttack(){
-        AttackCreator attackCreator = new AttackPrimaryCreator();
-        return attackCreator.createAttack(this.getCharacters());
+        CharactersPrimary charactersPrimary = (CharactersPrimary) super.getCharacters();
+        Attack attack = new AttackPrimary(charactersPrimary.getDamageList(),charactersPrimary.getCriticalMultiplier(),
+                charactersPrimary.getCriticalChance(), charactersPrimary.getStatusChance(),charactersPrimary.getMultiShot());
+
+        return attack;
     }
 
-    @Override
-    public String toString() {
-        return "PrimaryWeapon{" +
-                "attackCreator=" +
-                '}';
-    }
 }

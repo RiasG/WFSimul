@@ -16,6 +16,8 @@ public abstract class Attack {
         this.statusChance = statusChance;
     }
 
+
+
     public DamageList getDamageList() {
         return damageList;
     }

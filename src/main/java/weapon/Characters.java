@@ -1,6 +1,7 @@
 package weapon;
 
 public abstract class Characters {
+    private String name;
     private double attackSpeed;
     private double disposition;
     private DamageList damageList;
@@ -9,9 +10,10 @@ public abstract class Characters {
     private double statusChance;
     private NoiseLevel noiseLevel;
 
-    public Characters(double attackSpeed, double disposition, DamageList damageList,
+    public Characters(String name, double attackSpeed, double disposition, DamageList damageList,
                       double criticalChance, double criticalMultiplier,
                       double statusChance, NoiseLevel noiseLevel) {
+        this.name = name;
         this.attackSpeed = attackSpeed;
         this.disposition = disposition;
         this.damageList = damageList;

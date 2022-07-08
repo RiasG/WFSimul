@@ -1,7 +1,7 @@
 package weapon;
 
 public class AttackPrimaryCreator implements AttackCreator{
-    //private Characters characters;
+
     public AttackPrimaryCreator() {
     }
   /*  public boolean isCritical(double critChance, double critMult){
@@ -23,10 +23,10 @@ public class AttackPrimaryCreator implements AttackCreator{
     }
 
     @Override
-    public Attack createAttack(Characters characters1) {
-        CharactersPrimary characters = (CharactersPrimary) characters1;
-        Attack attack = new AttackPrimary(characters.getDamageList(),characters.getCriticalMultiplier(),
-                characters.getCriticalChance(), characters.getStatusChance(),characters.getMultiShot());
+    public Attack createAttack(Characters characters) {
+        CharactersPrimary charactersPrimary = (CharactersPrimary) characters;
+        Attack attack = new AttackPrimary(charactersPrimary.getDamageList(),charactersPrimary.getCriticalMultiplier(),
+                charactersPrimary.getCriticalChance(), charactersPrimary.getStatusChance(),charactersPrimary.getMultiShot());
 
         return attack;
     }
