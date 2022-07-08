@@ -4,16 +4,24 @@ import weapon.*;
 
 public class Main {
     public static void main(String[] args) {
-        DamageList damageList = new DamageList();
+        Characters characters = new CharactersPrimary(2,45, new DamageList(), 0.3,2,0.4,NoiseLevel.NOISE, 1,0.5,30,500);
+        characters.getDamageList().add(new Damage(23,DamageType.CORROSIVE));
+        Weapon weapon = new PrimaryWeapon("Karak", characters);
 
-        damageList.add(new Damage(233,DamageType.BLAST));
-        damageList.add(new Damage(11,DamageType.CORROSIVE));
-        System.out.println(damageList);
-        for (Damage d: damageList) {
-            System.out.println(d.getDamageType());
 
-        }
+        System.out.println(weapon.oneAttack());
+        Attack attack = weapon.oneAttack();
+        System.out.println(attack.getDamageList().getFirst().getDamageType());
 
+        //DamageList damageList = new DamageList();
+
+//        damageList.add(new Damage(233,DamageType.BLAST));
+//        damageList.add(new Damage(11,DamageType.CORROSIVE));
+//        System.out.println(damageList);
+//        for (Damage d: damageList) {
+//            System.out.println(d.getDamageType());
+//
+//        }
 
 
 

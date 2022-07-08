@@ -81,4 +81,17 @@ public abstract class Characters {
     public void setNoiseLevel(NoiseLevel noiseLevel) {
         this.noiseLevel = noiseLevel;
     }
+
+    @Override
+    public String toString() {
+        return "Characters{" +
+                "attackSpeed=" + attackSpeed +
+                ", disposition=" + disposition +
+                ", damageList=" + damageList +
+                ", criticalChance=" + criticalChance +
+                ", criticalMultiplier=" + criticalMultiplier +
+                ", statusChance=" + statusChance +
+                ", noiseLevel=" + noiseLevel +
+                '}';
+    }
 }

@@ -2,7 +2,6 @@ package weapon;
 
 public class CharactersPrimary extends Characters{
     private double multiShot;
-    private double projectileSpeed;
     private double reloadSpeed;
     private int magazineAmmo;
     private int fullAmmo;
@@ -14,10 +13,9 @@ public class CharactersPrimary extends Characters{
     public CharactersPrimary(double attackSpeed, double disposition, DamageList damageListList,
                              double criticalChance, double criticalMultiplier,
                              double statusChance, NoiseLevel noiseLevel, double multiShot,
-                             double projectileSpeed, double reloadSpeed, int magazineAmmo, int fullAmmo) {
+                             double reloadSpeed, int magazineAmmo, int fullAmmo) {
         super(attackSpeed, disposition, damageListList, criticalChance, criticalMultiplier, statusChance, noiseLevel);
         this.multiShot = multiShot;
-        this.projectileSpeed = projectileSpeed;
         this.reloadSpeed = reloadSpeed;
         this.magazineAmmo = magazineAmmo;
         this.fullAmmo = fullAmmo;
@@ -29,14 +27,6 @@ public class CharactersPrimary extends Characters{
 
     public void setMultiShot(double multiShot) {
         this.multiShot = multiShot;
-    }
-
-    public double getProjectileSpeed() {
-        return projectileSpeed;
-    }
-
-    public void setProjectileSpeed(double projectileSpeed) {
-        this.projectileSpeed = projectileSpeed;
     }
 
     public double getReloadSpeed() {
@@ -61,5 +51,15 @@ public class CharactersPrimary extends Characters{
 
     public void setFullAmmo(int fullAmmo) {
         this.fullAmmo = fullAmmo;
+    }
+
+    @Override
+    public String toString() {
+        return "CharactersPrimary{" +
+                "multiShot=" + multiShot +
+                ", reloadSpeed=" + reloadSpeed +
+                ", magazineAmmo=" + magazineAmmo +
+                ", fullAmmo=" + fullAmmo +
+                '}';
     }
 }

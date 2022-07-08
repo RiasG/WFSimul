@@ -1,5 +1,7 @@
 package weapon;
 
+
+
 public class Damage {
     private double amountDamage;
     private DamageType damageType;

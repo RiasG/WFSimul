@@ -60,4 +60,14 @@ public class Projectile {
     public void setStatusChance(double statusChance) {
         this.statusChance = statusChance;
     }
+
+    @Override
+    public String toString() {
+        return "Projectile{" +
+                "damageList=" + damageList +
+                ", critMulti=" + critMulti +
+                ", critChance=" + critChance +
+                ", statusChance=" + statusChance +
+                '}';
+    }
 }
