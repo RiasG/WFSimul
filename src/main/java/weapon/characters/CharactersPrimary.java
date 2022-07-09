@@ -1,4 +1,7 @@
-package weapon;
+package weapon.characters;
+
+import weapon.DamageList;
+import weapon.NoiseLevel;
 
 public class CharactersPrimary extends Characters{
     private double multiShot;

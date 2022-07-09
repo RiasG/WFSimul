@@ -1,4 +1,7 @@
-package weapon;
+package weapon.characters;
+
+import weapon.DamageList;
+import weapon.NoiseLevel;
 
 public abstract class Characters {
     private String name;

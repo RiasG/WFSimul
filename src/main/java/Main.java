@@ -1,6 +1,9 @@
 
 import weapon.*;
-
+import weapon.attacks.Attack;
+import weapon.attacks.AttackPrimary;
+import weapon.characters.Characters;
+import weapon.characters.CharactersPrimary;
 
 
 public class Main {
@@ -14,7 +17,7 @@ public class Main {
         System.out.println(weapon.mainAttack());
         Attack attack = weapon.mainAttack();
 
-        System.out.println(attack.getDamageList().getFirst().getDamageType());
+        System.out.println(attack.getAttackDamageList().getFirst().getDamageType());
         System.out.println(((AttackPrimary)attack).getMultiShot());
 
         //DamageList damageList = new DamageList();

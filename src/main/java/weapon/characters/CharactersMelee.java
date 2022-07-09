@@ -1,5 +1,8 @@
-package weapon;
+package weapon.characters;
 
+
+import weapon.DamageList;
+import weapon.NoiseLevel;
 
 public class CharactersMelee extends Characters{
 
@@ -7,11 +10,14 @@ public class CharactersMelee extends Characters{
      * Heavy damage characters
      */
     private DamageList heavyDamageList;
+    private double heavyDamageCritMulti;
+    private double heavyDamageCritChance;
     private DamageList slamHeavyDamageList;
-    private DamageList radiaHeavyDamageList;
+    private DamageList radialHeavyDamageList;
     private double slamHeavyRadius;
-    private double heavyDamageMulti;
+
     private double slamHeavyDamageMulti;
+    private double heavySlamRadius;
 
 
     /**
@@ -24,10 +30,14 @@ public class CharactersMelee extends Characters{
      */
     private DamageList slamDamageList;
     private DamageList radialDamageList;
+
+    /**
+     * slide attack
+     */
+
     private DamageList slideDamageList;
     private double slideDamageMulti;
     private double slamRadius;
-
     private int blockAngle;
     private int comboDuration;
 
@@ -35,6 +45,8 @@ public class CharactersMelee extends Characters{
      * Уменьшение урона при попадании одной аттаки по последующим целям
      */
     private double followThrough;
+
+
 
     public CharactersMelee(String name, double attackSpeed, double disposition, DamageList damageList,
                            double criticalChance, double criticalMultiplier,
@@ -58,7 +70,7 @@ public class CharactersMelee extends Characters{
         super(name, attackSpeed, disposition, damageList, criticalChance, criticalMultiplier, statusChance, noiseLevel);
         this.heavyDamageList = heavyDamageList;
         this.slamHeavyDamageList = slamHeavyDamageList;
-        this.radiaHeavyDamageList = radiaHeavyDamageList;
+        this.radialHeavyDamageList = radiaHeavyDamageList;
         this.slamHeavyRadius = slamHeavyRadius;
         this.windUp = windUp;
         this.slamDamageList = slamDamageList;
@@ -68,5 +80,37 @@ public class CharactersMelee extends Characters{
         this.blockAngle = blockAngle;
         this.comboDuration = comboDuration;
         this.followThrough = followThrough;
+    }
+
+    public DamageList getHeavyDamageList() {
+        return heavyDamageList;
+    }
+
+    public void setHeavyDamageList(DamageList heavyDamageList) {
+        this.heavyDamageList = heavyDamageList;
+    }
+
+    public double getHeavyDamageCritMulti() {
+        return heavyDamageCritMulti;
+    }
+
+    public double getSlamRadius() {
+        return slamRadius;
+    }
+
+    public void setSlamRadius(double slamRadius) {
+        this.slamRadius = slamRadius;
+    }
+
+    public void setHeavyDamageCritMulti(double heavyDamageCritMulti) {
+        this.heavyDamageCritMulti = heavyDamageCritMulti;
+    }
+
+    public double getHeavyDamageCriticalChance() {
+        return this.heavyDamageCritChance;
+    }
+
+    public double getHeavySlamRadius() {
+        return this.heavySlamRadius;
     }
 }

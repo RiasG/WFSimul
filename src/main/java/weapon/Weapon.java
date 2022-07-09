@@ -1,5 +1,8 @@
 package weapon;
 
+import weapon.attacks.Attack;
+import weapon.characters.Characters;
+
 public abstract class Weapon {
 
     private Characters characters;

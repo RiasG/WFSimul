@@ -1,5 +1,10 @@
 package weapon;
 
+import weapon.attacks.Attack;
+import weapon.attacks.AttackPrimary;
+import weapon.characters.Characters;
+import weapon.characters.CharactersPrimary;
+
 public class PrimaryWeapon extends Weapon{
 
 

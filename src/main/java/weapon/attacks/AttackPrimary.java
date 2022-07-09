@@ -1,6 +1,9 @@
-package weapon;
+package weapon.attacks;
 
-public class AttackPrimary extends Attack{
+import weapon.DamageList;
+import weapon.attacks.Attack;
+
+public class AttackPrimary extends Attack {
 
     private double multiShot;
 
