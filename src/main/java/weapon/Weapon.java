@@ -4,11 +4,14 @@ public abstract class Weapon {
 
     private Characters characters;
 
-    public Weapon( Characters characters) {
+    public Weapon() {
+    }
+
+    public Weapon(Characters characters) {
         this.characters = characters;
     }
 
-    public abstract Attack oneAttack();
+    public abstract Attack mainAttack();
 
 
 

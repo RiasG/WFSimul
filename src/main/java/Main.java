@@ -11,8 +11,8 @@ public class Main {
         Weapon weapon = new PrimaryWeapon(characters);
 
 
-        System.out.println(weapon.oneAttack());
-        Attack attack = weapon.oneAttack();
+        System.out.println(weapon.mainAttack());
+        Attack attack = weapon.mainAttack();
 
         System.out.println(attack.getDamageList().getFirst().getDamageType());
         System.out.println(((AttackPrimary)attack).getMultiShot());

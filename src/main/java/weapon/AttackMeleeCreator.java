@@ -1,9 +1,8 @@
 package weapon;
 
-public class AttackMeleeCreator implements AttackCreator {
+public  interface AttackMeleeCreator extends AttackCreator{
     @Override
-    public Attack createAttack(Characters characters) {
-        Attack attack = new AttackMelee();
-        return null;
-    }
+    public Attack mainAttack(Characters characters);
+
+    public abstract Attack secondaryAttack(Characters characters);
 }
