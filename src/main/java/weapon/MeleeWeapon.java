@@ -21,33 +21,29 @@ public class MeleeWeapon extends Weapon {
         return attack;
     }
 
-    public Attack heavyAttack(){
+    public Attack slamLightAttack(){
         CharactersMelee charactersMelee = (CharactersMelee) super.getCharacters();
-        Attack attack = new HeavyAttackMelee(charactersMelee.getHeavyDamageList(),charactersMelee.getHeavyDamageCritMulti(),
-                charactersMelee.getHeavyDamageCriticalChance(), charactersMelee.getStatusChance());
+        Attack attack = new SlamLightAttack(charactersMelee.getDamageList(),charactersMelee.getCriticalMultiplier(),
+                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance(), charactersMelee.getSlamDamageMulti());
         return attack;
     }
 
-    public Attack slamLightAttack(){
+    public Attack heavyAttack(){
         CharactersMelee charactersMelee = (CharactersMelee) super.getCharacters();
-        Attack attack = new SlamLightAttack(charactersMelee.getHeavyDamageList(),charactersMelee.getHeavyDamageCritMulti(),
-                charactersMelee.getHeavyDamageCritMulti(), charactersMelee.getStatusChance(), charactersMelee.getSlamRadius());
+        Attack attack = new HeavyAttackMelee(charactersMelee.getDamageList(),charactersMelee.getCriticalMultiplier(),
+                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance(), charactersMelee.getHeavyDamageMulti());
         return attack;
     }
+
+
 
     public Attack slamHeavyAttack(){
         CharactersMelee charactersMelee = (CharactersMelee) super.getCharacters();
-        Attack attack = new SlamHeavyAttack(charactersMelee.getHeavyDamageList(),charactersMelee.getHeavyDamageCritMulti(),
-                charactersMelee.getHeavyDamageCritMulti(), charactersMelee.getStatusChance(), charactersMelee.getHeavySlamRadius());
+        Attack attack = new SlamHeavyAttack(charactersMelee.getDamageList(),charactersMelee.getCriticalMultiplier(),
+                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance(), charactersMelee.getSlamHeavyDamageMulti());
         return attack;
     }
 
-    public Attack HeavyAttack(){
-        CharactersMelee charactersMelee = (CharactersMelee) super.getCharacters();
-        Attack attack = new SlamHeavyAttack(charactersMelee.getHeavyDamageList(),charactersMelee.getHeavyDamageCritMulti(),
-                charactersMelee.getHeavyDamageCritMulti(), charactersMelee.getStatusChance(), charactersMelee.getHeavySlamRadius());
-        return attack;
-    }
 
 
 
