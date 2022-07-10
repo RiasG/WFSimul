@@ -25,10 +25,13 @@ public class Main {
         charactersMelee.setDamageList(new DamageList());
         charactersMelee.getDamageList().add(new Damage(33,DamageType.GAS));
         Weapon meleeWeapon = new MeleeWeapon(charactersMelee);
+
+        ((CharactersMelee)meleeWeapon.getCharacters()).getRadialAttackDamage();
         System.out.println(((CharactersMelee) charactersMelee).getHeavyDamageList().getFirst().getDamageType().name());
         System.out.println(((CharactersMelee) charactersMelee).getHeavyDamageList().getFirst().getAmountDamage());
         System.out.println((charactersMelee).getDamageList().getFirst().getAmountDamage());
         System.out.println((charactersMelee).getDamageList().getFirst().getDamageType().name());
+        System.out.println(meleeWeapon.attack().getAttackDamageList().getFirst().getDamageType());
 
 
         //DamageList damageList = new DamageList();
