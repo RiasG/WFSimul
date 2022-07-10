@@ -1,8 +1,9 @@
 
 import weapon.*;
 import weapon.attacks.Attack;
-import weapon.attacks.AttackPrimary;
+import weapon.attacks.PrimaryAttack;
 import weapon.characters.Characters;
+import weapon.characters.CharactersMelee;
 import weapon.characters.CharactersPrimary;
 
 
@@ -14,11 +15,21 @@ public class Main {
         Weapon weapon = new PrimaryWeapon(characters);
 
 
-        System.out.println(weapon.mainAttack());
-        Attack attack = weapon.mainAttack();
+        System.out.println(weapon.attack());
+        Attack attack = weapon.attack();
 
         System.out.println(attack.getAttackDamageList().getFirst().getDamageType());
-        System.out.println(((AttackPrimary)attack).getMultiShot());
+        System.out.println(((PrimaryAttack)attack).getMultiShot());
+
+        Characters charactersMelee = new CharactersMelee(3);
+        charactersMelee.setDamageList(new DamageList());
+        charactersMelee.getDamageList().add(new Damage(33,DamageType.GAS));
+        Weapon meleeWeapon = new MeleeWeapon(charactersMelee);
+        System.out.println(((CharactersMelee) charactersMelee).getHeavyDamageList().getFirst().getDamageType().name());
+        System.out.println(((CharactersMelee) charactersMelee).getHeavyDamageList().getFirst().getAmountDamage());
+        System.out.println((charactersMelee).getDamageList().getFirst().getAmountDamage());
+        System.out.println((charactersMelee).getDamageList().getFirst().getDamageType().name());
+
 
         //DamageList damageList = new DamageList();
 

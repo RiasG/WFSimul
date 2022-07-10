@@ -1,16 +1,15 @@
 package weapon.attacks;
 
 import weapon.DamageList;
-import weapon.attacks.Attack;
 
-public class AttackPrimary extends Attack {
+public class PrimaryAttack extends Attack {
 
     private double multiShot;
 
-    public AttackPrimary() {
+    public PrimaryAttack() {
     }
 
-    public AttackPrimary(DamageList damageList, double critMulti, double critChance, double statusChance, double multiShot) {
+    public PrimaryAttack(DamageList damageList, double critMulti, double critChance, double statusChance, double multiShot) {
         super(damageList, critMulti, critChance, statusChance);
         this.multiShot = multiShot;
 

@@ -14,7 +14,7 @@ public abstract class Weapon {
         this.characters = characters;
     }
 
-    public abstract Attack mainAttack();
+    public abstract Attack attack();
 
 
 

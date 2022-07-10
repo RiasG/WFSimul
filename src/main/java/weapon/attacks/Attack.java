@@ -8,6 +8,7 @@ public abstract class Attack {
     private double attackCritChance;
     private double attackStatusChance;
 
+
     public Attack() {
     }
 
