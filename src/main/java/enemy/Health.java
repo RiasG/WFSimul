@@ -13,4 +13,5 @@ public class Health extends HitPointBar {
     public Health(double hitPoint, DamageList weaknessDamageList, DamageList resistanceDamageList) {
         super(hitPoint, weaknessDamageList, resistanceDamageList);
     }
+
 }
