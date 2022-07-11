@@ -1,12 +1,15 @@
 package weapon.attacks;
 
 import damage.DamageList;
+import weapon.AttackMeleeCreator;
+import weapon.characters.Characters;
 
 public class MeleeAttack extends Attack {
 
     private double meleeAttackMulti;
 
     public MeleeAttack() {
+        meleeAttackMulti = 1;
     }
 
     public MeleeAttack(DamageList attackDamageList, double attackCritMulti, double attackCritChance,
@@ -23,4 +26,6 @@ public class MeleeAttack extends Attack {
     public void setMeleeAttackMulti(double meleeAttackMulti) {
         this.meleeAttackMulti = meleeAttackMulti;
     }
+
+
 }

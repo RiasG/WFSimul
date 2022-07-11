@@ -5,42 +5,38 @@ import damage.Damage;
 import damage.DamageList;
 
 public class CharactersMelee extends Characters{
-
-    /**
-     * Heavy damage characters
-     */
-    private double heavyAttackMulti;
-
-    /**
-     * Время подготовки тяжелой атаки
-     */
-    private double windUp;
-
-    /**
-     * Slam damage characters
-     */
-    private double slamAttackMulti;
-    private double slamHeavyAttackMulti;
-
+    
     /**
      * RadialAttack
      */
     private double radialAttackRadius;
-    private double radialAttackMulti;
     private double heavyRadialAttackRadius;
-    private double heavyRadialAttackMulti;
     private Damage radialAttackDamage;
 
     /**
      * slide attack
      */
 
-    private double slideAttackMulti;
-    private Damage slideAttackDamage;
+    private Damage slideAttackDamage; // у слайд атаки зачастую тип урона
 
+    /**
+     * Множители атак
+     */
+    private double attackMulti;
+    private double heavyAttackMulti;
+    private double slideAttackMulti;
+    private double heavyRadialAttackMulti;
+    private double radialAttackMulti;
+    private double slamAttackMulti;
+    private double slamHeavyAttackMulti;
+
+    /**
+     * Дополнительные хр-ки
+     */
+    private double windUp; // Время подготовки тяжелой атаки
     private int blockAngle;
     private int comboDuration;
-    private double attackMulti;
+
 
     /**
      * Уменьшение урона при попадании одной аттаки по последующим целям
@@ -71,15 +67,22 @@ public class CharactersMelee extends Characters{
         return slamHeavyAttackMulti;
     }
 
-    public DamageList getHeavyDamageList(){
-        DamageList damages = new DamageList();
-        int i = 0;
-        for (Damage d:super.getDamageList()) {
-            Damage damage = new Damage(d.getAmountDamage() * heavyAttackMulti, d.getDamageType());
-            damages.add(damage);
-            i++;
-        }
 
+    /**
+     *
+     * @param mult
+     * @return
+     *
+     * Все атаки ближнего боя имеют множитель урона, который берется из типа атаки, например тяжелой атаки или
+     * удара по земле, зависит от типа оружия, но есть и уникальные. Так же стандартные атаки могут иметь множитель урона,
+     * если являются частью комбо (это будет реализовано в стойках - моды для ближки, пока нет в разработке)
+     */
+    public DamageList getDamageListWithMulti(double mult){
+        DamageList damages = new DamageList();
+        for (Damage d:super.getDamageList()) {
+            Damage damage = new Damage(d.getAmountDamage() * mult, d.getDamageType());
+            damages.add(damage);
+        }
         return damages;
     }
 

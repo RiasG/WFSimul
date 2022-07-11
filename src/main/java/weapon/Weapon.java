@@ -3,7 +3,7 @@ package weapon;
 import weapon.attacks.Attack;
 import weapon.characters.Characters;
 
-public abstract class Weapon {
+public abstract class Weapon implements AttackCreator{
 
     private Characters characters;
 
@@ -15,7 +15,6 @@ public abstract class Weapon {
     }
 
     public abstract Attack attack();
-
 
 
     public Characters getCharacters() {

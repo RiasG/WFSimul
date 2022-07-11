@@ -14,7 +14,8 @@ import weapon.characters.CharactersPrimary;
 
 public class Main {
     public static void main(String[] args) {
-        /*
+/*
+
         Characters characters = new CharactersPrimary("Karak", 2,45, new DamageList(), 0.3,2,0.4,
                 NoiseLevel.NOISE, 1,0.5,30,500);
         characters.getDamageList().add(new Damage(23, DamageType.CORROSIVE));
@@ -39,7 +40,8 @@ public class Main {
         System.out.println((charactersMelee).getDamageList().getFirst().getAmountDamage());
         System.out.println((charactersMelee).getDamageList().getFirst().getDamageType().name());
         System.out.println(meleeWeapon.attack().getAttackDamageList().getFirst().getDamageType());
-      */
+*/
+
 
         /*
         DamageList damageList = new DamageList();

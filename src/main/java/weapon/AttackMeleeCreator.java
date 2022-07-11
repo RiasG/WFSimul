@@ -4,8 +4,13 @@ import weapon.attacks.Attack;
 import weapon.characters.Characters;
 
 public  interface AttackMeleeCreator extends AttackCreator{
-    @Override
-    public Attack mainAttack(Characters characters);
+   Attack attack();
 
-    public abstract Attack secondaryAttack(Characters characters);
+   Attack heavyAttack();
+   Attack slamLightAttack();
+
+   Attack slamHeavyAttack();
+   Attack radialLightAttack();
+   Attack heavyRadialLightAttack();
+   Attack slideAttack();
 }
