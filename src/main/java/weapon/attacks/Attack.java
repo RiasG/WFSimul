@@ -1,6 +1,6 @@
 package weapon.attacks;
 
-import weapon.DamageList;
+import damage.DamageList;
 
 public abstract class Attack {
     private DamageList attackDamageList;

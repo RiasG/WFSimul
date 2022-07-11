@@ -1,6 +1,6 @@
 package weapon.attacks;
 
-import weapon.DamageList;
+import damage.DamageList;
 
 public class RadialAttack extends Attack{
     private double radialAttackRadius;

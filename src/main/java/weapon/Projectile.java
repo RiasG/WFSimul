@@ -1,6 +1,6 @@
 package weapon;
 
-import java.util.LinkedList;
+import damage.DamageList;
 
 public class Projectile {
     private DamageList damageList;
@@ -8,7 +8,7 @@ public class Projectile {
     private double critChance;
     private double statusChance;
 
-    //private DamageType damageWithStatus;
+    //private damage.DamageType damageWithStatus;
     //private double statusMulti;
 
     public Projectile() {

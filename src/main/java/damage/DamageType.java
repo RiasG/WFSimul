@@ -1,4 +1,4 @@
-package weapon;
+package damage;
 
 public enum DamageType {
     SLASH, IMPACT, PUNCTURE,  ELECTRICITY, TOXIC, HEAT, COLD, RADIATION,

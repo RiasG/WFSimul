@@ -1,8 +1,8 @@
 package weapon.characters;
 
 
-import weapon.Damage;
-import weapon.DamageList;
+import damage.Damage;
+import damage.DamageList;
 
 public class CharactersMelee extends Characters{
 
@@ -52,9 +52,6 @@ public class CharactersMelee extends Characters{
 
     }
 
-    public CharactersMelee(double heavyAttackMulti) {
-        this.heavyAttackMulti = heavyAttackMulti;
-    }
 
     public double getHeavyAttackMulti() {
         return heavyAttackMulti;

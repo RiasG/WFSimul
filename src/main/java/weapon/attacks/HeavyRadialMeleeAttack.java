@@ -1,6 +1,6 @@
 package weapon.attacks;
 
-import weapon.DamageList;
+import damage.DamageList;
 
 public class HeavyRadialMeleeAttack extends RadialMeleeAttack {
     public HeavyRadialMeleeAttack(DamageList attackDamageList, double attackCritMulti, double attackCritChance,

@@ -1,6 +1,6 @@
 package weapon.characters;
 
-import weapon.DamageList;
+import damage.DamageList;
 import weapon.NoiseLevel;
 
 public abstract class Characters {

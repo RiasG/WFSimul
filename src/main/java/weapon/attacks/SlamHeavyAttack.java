@@ -1,6 +1,6 @@
 package weapon.attacks;
 
-import weapon.DamageList;
+import damage.DamageList;
 
 public class SlamHeavyAttack extends MeleeAttack {
     public SlamHeavyAttack(DamageList attackDamageList,
