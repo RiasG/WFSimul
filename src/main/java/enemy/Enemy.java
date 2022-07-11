@@ -17,5 +17,27 @@ public class Enemy {
         this.enemyLevel = enemyLevel;
     }
 
+    public Health getEnemyHealth() {
+        return enemyHealth;
+    }
 
+    public void setEnemyHealth(Health enemyHealth) {
+        this.enemyHealth = enemyHealth;
+    }
+
+    public Shield getEnemyShield() {
+        return enemyShield;
+    }
+
+    public void setEnemyShield(Shield enemyShield) {
+        this.enemyShield = enemyShield;
+    }
+
+    public int getEnemyLevel() {
+        return enemyLevel;
+    }
+
+    public void setEnemyLevel(int enemyLevel) {
+        this.enemyLevel = enemyLevel;
+    }
 }

@@ -10,5 +10,7 @@ public class Health extends HitPointBar {
         this.armor = armor;
     }
 
-
+    public Health(double hitPoint, DamageList weaknessDamageList, DamageList resistanceDamageList) {
+        super(hitPoint, weaknessDamageList, resistanceDamageList);
+    }
 }

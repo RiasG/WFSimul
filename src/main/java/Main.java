@@ -2,6 +2,8 @@
 import damage.Damage;
 import damage.DamageList;
 import damage.DamageType;
+import enemy.Enemy;
+import enemy.Health;
 import weapon.*;
 import weapon.attacks.Attack;
 import weapon.attacks.PrimaryAttack;
@@ -53,6 +55,7 @@ public class Main {
 */
 
 
+        Enemy enemy = new Enemy(new Health(100, new DamageList(), new DamageList()), 10);
 
 
 
