@@ -25,55 +25,66 @@ public class MeleeWeapon extends Weapon implements AttackMeleeCreator{
 
     @Override
     public Attack attack() {
-        CharactersMelee chMelee = new CharactersMelee();
-        charactersMelee.getDamageListWithMulti(charactersMelee.getAttackMulti());
-         return new MeleeAttack(charactersMelee.getDamageList(),charactersMelee.getCriticalMultiplier(),
-                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance(), charactersMelee.getAttackMulti());
-    }
-
-    @Override
-    public Attack slamLightAttack(){
-        Attack attack = new SlamLightAttack(charactersMelee.getDamageList(),charactersMelee.getCriticalMultiplier(),
-                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance(), charactersMelee.getSlamAttackMulti());
-        return attack;
+        return new MeleeAttack(
+                charactersMelee.getDamageListWithMulti(charactersMelee.getAttackMulti()),
+                charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
+                charactersMelee.getStatusChance()
+        );
     }
 
     @Override
     public Attack heavyAttack(){
-        Attack attack = new HeavyAttackMelee(charactersMelee.getDamageList(),charactersMelee.getCriticalMultiplier(),
-                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance(), charactersMelee.getHeavyAttackMulti());
-        return attack;
+        return new HeavyAttackMelee(
+                charactersMelee.getDamageListWithMulti(charactersMelee.getHeavyAttackMulti()),
+                charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
+                charactersMelee.getStatusChance()
+        );
     }
 
     @Override
+    public Attack slamLightAttack(){
+        return new SlamLightAttack(
+                charactersMelee.getDamageListWithMulti(charactersMelee.getSlamAttackMulti()),
+                charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
+                charactersMelee.getStatusChance()
+        );
+    }
+
+
+
+    @Override
     public Attack slamHeavyAttack(){
-        Attack attack = new SlamHeavyAttack(charactersMelee.getDamageList(),charactersMelee.getCriticalMultiplier(),
-                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance(), charactersMelee.getSlamHeavyAttackMulti());
-        return attack;
+        return new SlamHeavyAttack(
+                charactersMelee.getDamageListWithMulti(charactersMelee.getSlamHeavyAttackMulti()),
+                charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
+                charactersMelee.getStatusChance()
+        );
     }
 
    @Override
     public Attack radialLightAttack(){
-        Attack attack = new RadialMeleeAttack(charactersMelee.getDamageList(),charactersMelee.getCriticalMultiplier(),
-                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance(),
-                charactersMelee.getRadialAttackMulti(), charactersMelee.getRadialAttackRadius());
-        return attack;
+        return new RadialMeleeAttack(
+                charactersMelee.getDamageListWithMulti(charactersMelee.getRadialAttackMulti()),
+                charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
+                charactersMelee.getStatusChance(), charactersMelee.getRadialAttackRadius()
+        );
     }
 
     @Override
-    public Attack heavyRadialLightAttack(){
-        Attack attack = new HeavyRadialMeleeAttack(charactersMelee.getDamageList(),charactersMelee.getCriticalMultiplier(),
-                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance(),
-                charactersMelee.getHeavyRadialAttackMulti(), charactersMelee.getHeavyRadialAttackRadius());
-        return attack;
+    public Attack heavyRadialAttack(){
+        return new HeavyRadialMeleeAttack(
+                charactersMelee.getDamageListWithMulti(charactersMelee.getRadialAttackMulti()),
+                charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
+                charactersMelee.getStatusChance(), charactersMelee.getHeavyRadialAttackRadius()
+        );
     }
 
     @Override
     public Attack slideAttack(){
-        Attack attack = new HeavyRadialMeleeAttack(charactersMelee.getDamageList(),charactersMelee.getCriticalMultiplier(),
-                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance(),
-                charactersMelee.getHeavyRadialAttackMulti(), charactersMelee.getHeavyRadialAttackRadius());
-        return attack;
+        return new SlideAttack(charactersMelee.getDamageListWithMulti(charactersMelee.getRadialAttackMulti()),
+                charactersMelee.getCriticalMultiplier(),
+                charactersMelee.getCriticalChance(), charactersMelee.getStatusChance()
+        );
     }
 
 

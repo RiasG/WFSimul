@@ -14,7 +14,7 @@ import weapon.characters.CharactersPrimary;
 
 public class Main {
     public static void main(String[] args) {
-/*
+
 
         Characters characters = new CharactersPrimary("Karak", 2,45, new DamageList(), 0.3,2,0.4,
                 NoiseLevel.NOISE, 1,0.5,30,500);
@@ -35,12 +35,13 @@ public class Main {
         Weapon meleeWeapon = new MeleeWeapon(charactersMelee);
 
         ((CharactersMelee)meleeWeapon.getCharacters()).getRadialAttackDamage();
-        System.out.println(((CharactersMelee) charactersMelee).getHeavyDamageList().getFirst().getDamageType().name());
-        System.out.println(((CharactersMelee) charactersMelee).getHeavyDamageList().getFirst().getAmountDamage());
+        System.out.println(((CharactersMelee) charactersMelee).getDamageListWithMulti(
+                ((CharactersMelee) charactersMelee).getAttackMulti()).getFirst().getDamageType().name());
+        System.out.println(((CharactersMelee) charactersMelee).getDamageListWithMulti(3).getFirst().getAmountDamage());
         System.out.println((charactersMelee).getDamageList().getFirst().getAmountDamage());
         System.out.println((charactersMelee).getDamageList().getFirst().getDamageType().name());
         System.out.println(meleeWeapon.attack().getAttackDamageList().getFirst().getDamageType());
-*/
+
 
 
         /*

@@ -5,7 +5,7 @@ import damage.Damage;
 import damage.DamageList;
 
 public class CharactersMelee extends Characters{
-    
+
     /**
      * RadialAttack
      */
@@ -36,7 +36,6 @@ public class CharactersMelee extends Characters{
     private double windUp; // Время подготовки тяжелой атаки
     private int blockAngle;
     private int comboDuration;
-
 
     /**
      * Уменьшение урона при попадании одной аттаки по последующим целям
@@ -79,12 +78,13 @@ public class CharactersMelee extends Characters{
      */
     public DamageList getDamageListWithMulti(double mult){
         DamageList damages = new DamageList();
-        for (Damage d:super.getDamageList()) {
+        for (Damage d: super.getDamageList()) {
             Damage damage = new Damage(d.getAmountDamage() * mult, d.getDamageType());
             damages.add(damage);
         }
         return damages;
     }
+
 
 
     public double getAttackMulti() {

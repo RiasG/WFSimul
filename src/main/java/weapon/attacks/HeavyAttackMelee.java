@@ -8,7 +8,7 @@ public class HeavyAttackMelee extends MeleeAttack{
     }
 
     public HeavyAttackMelee(DamageList attackDamageList, double attackCritMulti,
-                            double attackCritChance, double attackStatusChance, double meleeAttackMulti) {
-        super(attackDamageList, attackCritMulti, attackCritChance, attackStatusChance, meleeAttackMulti);
+                            double attackCritChance, double attackStatusChance) {
+        super(attackDamageList, attackCritMulti, attackCritChance, attackStatusChance);
     }
 }
