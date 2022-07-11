@@ -3,6 +3,7 @@ package weapon.characters;
 
 import damage.Damage;
 import damage.DamageList;
+import weapon.NoiseLevel;
 
 public class CharactersMelee extends Characters{
 
@@ -47,6 +48,31 @@ public class CharactersMelee extends Characters{
 
     }
 
+    public CharactersMelee(String name, double attackSpeed, double disposition, DamageList damageList,
+                           double criticalChance, double criticalMultiplier, double statusChance,
+                           NoiseLevel noiseLevel, double radialAttackRadius,
+                           double heavyRadialAttackRadius, Damage radialAttackDamage,
+                           Damage slideAttackDamage, double attackMulti, double heavyAttackMulti,
+                           double slideAttackMulti, double heavyRadialAttackMulti,
+                           double radialAttackMulti, double slamAttackMulti, double slamHeavyAttackMulti,
+                           double windUp, int blockAngle, int comboDuration, double followThrough) {
+        super(name, attackSpeed, disposition, damageList, criticalChance, criticalMultiplier, statusChance, noiseLevel);
+        this.radialAttackRadius = radialAttackRadius;
+        this.heavyRadialAttackRadius = heavyRadialAttackRadius;
+        this.radialAttackDamage = radialAttackDamage;
+        this.slideAttackDamage = slideAttackDamage;
+        this.attackMulti = attackMulti;
+        this.heavyAttackMulti = heavyAttackMulti;
+        this.slideAttackMulti = slideAttackMulti;
+        this.heavyRadialAttackMulti = heavyRadialAttackMulti;
+        this.radialAttackMulti = radialAttackMulti;
+        this.slamAttackMulti = slamAttackMulti;
+        this.slamHeavyAttackMulti = slamHeavyAttackMulti;
+        this.windUp = windUp;
+        this.blockAngle = blockAngle;
+        this.comboDuration = comboDuration;
+        this.followThrough = followThrough;
+    }
 
     public double getHeavyAttackMulti() {
         return heavyAttackMulti;
@@ -65,6 +91,7 @@ public class CharactersMelee extends Characters{
     public double getSlamHeavyAttackMulti() {
         return slamHeavyAttackMulti;
     }
+
 
 
     /**
@@ -133,5 +160,61 @@ public class CharactersMelee extends Characters{
 
     public double getFollowThrough() {
         return followThrough;
+    }
+
+    public void setRadialAttackRadius(double radialAttackRadius) {
+        this.radialAttackRadius = radialAttackRadius;
+    }
+
+    public void setHeavyRadialAttackRadius(double heavyRadialAttackRadius) {
+        this.heavyRadialAttackRadius = heavyRadialAttackRadius;
+    }
+
+    public void setRadialAttackDamage(Damage radialAttackDamage) {
+        this.radialAttackDamage = radialAttackDamage;
+    }
+
+    public void setSlideAttackDamage(Damage slideAttackDamage) {
+        this.slideAttackDamage = slideAttackDamage;
+    }
+
+    public void setAttackMulti(double attackMulti) {
+        this.attackMulti = attackMulti;
+    }
+
+    public void setSlideAttackMulti(double slideAttackMulti) {
+        this.slideAttackMulti = slideAttackMulti;
+    }
+
+    public void setHeavyRadialAttackMulti(double heavyRadialAttackMulti) {
+        this.heavyRadialAttackMulti = heavyRadialAttackMulti;
+    }
+
+    public void setRadialAttackMulti(double radialAttackMulti) {
+        this.radialAttackMulti = radialAttackMulti;
+    }
+
+    public void setSlamAttackMulti(double slamAttackMulti) {
+        this.slamAttackMulti = slamAttackMulti;
+    }
+
+    public void setSlamHeavyAttackMulti(double slamHeavyAttackMulti) {
+        this.slamHeavyAttackMulti = slamHeavyAttackMulti;
+    }
+
+    public void setWindUp(double windUp) {
+        this.windUp = windUp;
+    }
+
+    public void setBlockAngle(int blockAngle) {
+        this.blockAngle = blockAngle;
+    }
+
+    public void setComboDuration(int comboDuration) {
+        this.comboDuration = comboDuration;
+    }
+
+    public void setFollowThrough(double followThrough) {
+        this.followThrough = followThrough;
     }
 }

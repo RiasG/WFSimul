@@ -50,8 +50,6 @@ public class MeleeWeapon extends Weapon implements AttackMeleeCreator{
         );
     }
 
-
-
     @Override
     public Attack slamHeavyAttack(){
         return new SlamHeavyAttack(
@@ -88,6 +86,7 @@ public class MeleeWeapon extends Weapon implements AttackMeleeCreator{
     }
 
 
-
-
+    public CharactersMelee getCharactersMelee() {
+        return charactersMelee;
+    }
 }

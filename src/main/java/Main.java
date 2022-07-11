@@ -28,18 +28,21 @@ public class Main {
         System.out.println(attack.getAttackDamageList().getFirst().getDamageType());
         System.out.println(((PrimaryAttack)attack).getMultiShot());
 
-        Characters charactersMelee = new CharactersMelee();
-        ((CharactersMelee)charactersMelee).setHeavyAttackMulti(4);
+        CharactersMelee charactersMelee = new CharactersMelee();
+        charactersMelee.setHeavyAttackMulti(4);
         charactersMelee.setDamageList(new DamageList());
+        charactersMelee.setBlockAngle(39);
         charactersMelee.getDamageList().add(new Damage(33,DamageType.ELECTRICITY));
-        Weapon meleeWeapon = new MeleeWeapon(charactersMelee);
+        MeleeWeapon meleeWeapon = new MeleeWeapon(charactersMelee);
 
-        ((CharactersMelee)meleeWeapon.getCharacters()).getRadialAttackDamage();
-        System.out.println(((CharactersMelee) charactersMelee).getDamageListWithMulti(
-                ((CharactersMelee) charactersMelee).getAttackMulti()).getFirst().getDamageType().name());
-        System.out.println(((CharactersMelee) charactersMelee).getDamageListWithMulti(3).getFirst().getAmountDamage());
-        System.out.println((charactersMelee).getDamageList().getFirst().getAmountDamage());
-        System.out.println((charactersMelee).getDamageList().getFirst().getDamageType().name());
+
+        System.out.println(meleeWeapon.getCharactersMelee().getHeavyAttackMulti());
+        System.out.println(meleeWeapon.getCharactersMelee().getBlockAngle());
+        System.out.println(charactersMelee.getDamageListWithMulti(
+                charactersMelee.getAttackMulti()).getFirst().getDamageType().name());
+        System.out.println(charactersMelee.getDamageListWithMulti(4).getFirst().getAmountDamage());
+        System.out.println(charactersMelee.getDamageList().getFirst().getAmountDamage());
+        System.out.println(charactersMelee.getDamageList().getFirst().getDamageType().name());
         System.out.println(meleeWeapon.attack().getAttackDamageList().getFirst().getDamageType());
 
 
