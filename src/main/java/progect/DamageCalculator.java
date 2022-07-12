@@ -3,8 +3,6 @@ package progect;
 import progect.damage.Damage;
 import progect.damage.DamageList;
 import progect.enemy.Armor;
-import progect.enemy.Enemy;
-import progect.enemy.Health;
 import progect.enemy.HitPoint;
 import progect.weapon.attacks.Attack;
 
@@ -37,7 +35,7 @@ public class DamageCalculator {
 
         return cMult;
     }
-    public static DamageList calculateDamageList(DamageList damageList, double critChance, double critMult){
+    public static DamageList calculateCriticalDamageList(DamageList damageList, double critChance, double critMult){
         double cMult = 1;
         DamageList dList = damageList;
 
@@ -50,30 +48,35 @@ public class DamageCalculator {
         return dList;
     }
 
-    public static void calculateWeaknessResistance(DamageList attackDL, DamageList weaknessDL, DamageList resistanceDL){
-        for (int i = 0; i < attackDL.size(); i++) {
-            for (int j = 0; j < weaknessDL.size(); j++){
-                if (attackDL.get(i).getDamageType() == weaknessDL.get(j).getDamageType()){
-                    attackDL.get(i).setAmountDamage(attackDL.get(i).getAmountDamage() * (weaknessDL.get(j).getAmountDamage() + 1));
-                }
-            }
-        }
+    public static DamageList calculateWeaknessResistance(DamageList attackDL, DamageList weaknessDL, DamageList resistanceDL){
+        DamageList damages = new DamageList();
 
-        for (int i = 0; i < attackDL.size(); i++) {
+        for (int i = 0; i < damages.size(); i++) {
+            for (int j = 0; j < weaknessDL.size(); j++){
+                if (damages.get(i).getDamageType() == weaknessDL.get(j).getDamageType()){
+                    damages.get(i).setAmountDamage(damages.get(i).getAmountDamage() * (weaknessDL.get(j).getAmountDamage() + 1));
+                }
+            }
+
             for (int j = 0; j < resistanceDL.size(); j++){
-                if (attackDL.get(i).getDamageType() == resistanceDL.get(j).getDamageType()){
-                    attackDL.get(i).setAmountDamage(attackDL.get(i).getAmountDamage() * (resistanceDL.get(j).getAmountDamage()));
+                if (damages.get(i).getDamageType() == resistanceDL.get(j).getDamageType()){
+                    damages.get(i).setAmountDamage(damages.get(i).getAmountDamage() * (resistanceDL.get(j).getAmountDamage()));
                 }
             }
         }
+        return damages;
     }
 
-    public static void calculateDamageOnHitPoint(HitPoint hitPoint, Attack attack){
-        DamageList criticalDamageList = calculateDamageList(attack.getAttackDamageList(),
+    public static void calculateDamageByHitPoint(HitPoint hitPoint, Attack attack){
+        DamageList criticalDamageList = calculateCriticalDamageList(attack.getAttackDamageList(),
                 attack.getAttackCritChance(),attack.getAttackCritMulti());
         if (!(hitPoint instanceof Armor)){
-            DamageList resists = hitPoint.getResistanceDamageList();
-
+            calculateWeaknessResistance(criticalDamageList, hitPoint.getWeaknessDamageList(), hitPoint.getResistanceDamageList());
+            for (Damage d:attack.getAttackDamageList()) {
+                System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
+            }
+            for (int i = 0; i < criticalDamageList.size(); i++)
+                hitPoint.takeDamage(criticalDamageList.get(i).getAmountDamage());
         }
 
     }

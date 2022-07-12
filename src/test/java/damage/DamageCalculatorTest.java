@@ -5,11 +5,10 @@ import progect.DamageCalculator;
 import progect.damage.Damage;
 import progect.damage.DamageList;
 import progect.damage.DamageType;
-import progect.enemy.AlloyArmor;
-import progect.weapon.attacks.HeavyAttackMelee;
+import progect.enemy.Health;
 
 import static progect.DamageCalculator.calculateCritDamage;
-import static progect.DamageCalculator.calculateDamageList;
+import static progect.DamageCalculator.calculateCriticalDamageList;
 
 
 public class DamageCalculatorTest {
@@ -31,7 +30,7 @@ public class DamageCalculatorTest {
             System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
 
         }
-        damageList = calculateDamageList(damageList,cChance,cMult);
+        damageList = calculateCriticalDamageList(damageList,cChance,cMult);
 
 
         for (Damage d:damageList) {
@@ -59,13 +58,23 @@ public class DamageCalculatorTest {
         weakness.add(new Damage(0.5, DamageType.VIRAL));
         weakness.add(new Damage(0.25,DamageType.ELECTRICITY));
         resistance.add(new Damage(0.75,DamageType.COLD));
-        resistance.add(new Damage(0.5,DamageType.RADIATION));
+        resistance.add(new Damage(0.5,DamageType.CORROSIVE));
 
-        DamageCalculator.calculateWeaknessResistance(damageList,weakness,resistance);
+        DamageList dList = damageList;
+
+
+
+        for (Damage d:damageList) {
+            System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
+        }
+        DamageCalculator.calculateWeaknessResistance(dList,weakness,resistance);
 
         //TODO с первого раза (easy)
         for (Damage d:damageList) {
             System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
         }
+
+        Health health = new Health(1000,weakness,resistance);
+        //DamageCalculator.calculateDamageByHitPoint(health,);
     }
 }

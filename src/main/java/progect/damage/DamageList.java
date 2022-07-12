@@ -11,4 +11,5 @@ public class DamageList extends LinkedList<Damage> {
     public DamageList(Collection<? extends Damage> c) {
         super(c);
     }
+
 }
