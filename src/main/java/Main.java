@@ -61,9 +61,5 @@ public class Main {
 */
 
 
-        Enemy enemy = new Enemy(new Health(100, new DamageList(), new DamageList()), 10);
-
-
-
     }
 }

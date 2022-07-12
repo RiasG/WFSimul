@@ -3,12 +3,12 @@ package enemy;
 import damage.DamageList;
 import weapon.attacks.Attack;
 
-public abstract class HitPointBar {
+public abstract class HitPoint {
     private double hitPoint;
     private DamageList weaknessDamageList;
     private DamageList resistanceDamageList;
 
-    public HitPointBar(double hitPoint, DamageList weaknessDamageList, DamageList resistanceDamageList) {
+    public HitPoint(double hitPoint, DamageList weaknessDamageList, DamageList resistanceDamageList) {
         this.hitPoint = hitPoint;
         this.weaknessDamageList = weaknessDamageList;
         this.resistanceDamageList = resistanceDamageList;

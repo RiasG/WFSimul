@@ -1,5 +1,6 @@
 package weapon.characters;
 
+import damage.DamageCalculator;
 import damage.DamageList;
 import weapon.NoiseLevel;
 
