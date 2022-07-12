@@ -6,6 +6,8 @@ import progect.enemy.Armor;
 import progect.enemy.HitPoint;
 import progect.weapon.attacks.Attack;
 
+import java.util.LinkedList;
+
 public class DamageCalculator {
 
     public static DamageList multiplyDamageList(DamageList dList, double mult){
@@ -48,8 +50,9 @@ public class DamageCalculator {
         return dList;
     }
 
-    public static DamageList calculateWeaknessResistance(DamageList attackDL, DamageList weaknessDL, DamageList resistanceDL){
-        DamageList damages = new DamageList();
+    public static DamageList calculateWeaknessResistance(DamageList damages, DamageList weaknessDL, DamageList resistanceDL){
+        damages = new DamageList(damages);
+
 
         for (int i = 0; i < damages.size(); i++) {
             for (int j = 0; j < weaknessDL.size(); j++){

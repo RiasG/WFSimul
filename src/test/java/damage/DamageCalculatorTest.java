@@ -60,16 +60,14 @@ public class DamageCalculatorTest {
         resistance.add(new Damage(0.75,DamageType.COLD));
         resistance.add(new Damage(0.5,DamageType.CORROSIVE));
 
-        DamageList dList = damageList;
-
+        DamageList dList = new DamageList(damageList);
 
 
         for (Damage d:damageList) {
             System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
         }
-        DamageCalculator.calculateWeaknessResistance(dList,weakness,resistance);
+        dList = DamageCalculator.calculateWeaknessResistance(damageList,weakness,resistance);
 
-        //TODO с первого раза (easy)
         for (Damage d:damageList) {
             System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
         }
