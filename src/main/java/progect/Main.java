@@ -7,7 +7,6 @@ import progect.weapon.MeleeWeapon;
 import progect.weapon.NoiseLevel;
 import progect.weapon.PrimaryWeapon;
 import progect.weapon.Weapon;
-import weapon.*;
 import progect.weapon.attacks.Attack;
 import progect.weapon.attacks.PrimaryAttack;
 import progect.weapon.characters.Characters;

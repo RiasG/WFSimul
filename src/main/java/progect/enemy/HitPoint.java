@@ -7,6 +7,9 @@ public abstract class HitPoint {
     private DamageList weaknessDamageList;
     private DamageList resistanceDamageList;
 
+    public HitPoint() {
+    }
+
     public HitPoint(double hitPoint, DamageList weaknessDamageList, DamageList resistanceDamageList) {
         this.hitPoint = hitPoint;
         this.weaknessDamageList = weaknessDamageList;
@@ -35,5 +38,13 @@ public abstract class HitPoint {
 
     public void setResistanceDamageList(DamageList resistanceDamageList) {
         this.resistanceDamageList = resistanceDamageList;
+    }
+
+    public boolean takeDamage(double damage){
+        if (damage <= 0 ) return false;
+        else {
+            this.hitPoint -= damage;
+            return true;
+        }
     }
 }

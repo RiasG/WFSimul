@@ -19,7 +19,17 @@ public abstract class Attack {
         this.attackStatusChance = attackStatusChance;
     }
 
+    public double getAttackCritMulti() {
+        return attackCritMulti;
+    }
 
+    public double getAttackCritChance() {
+        return attackCritChance;
+    }
+
+    public double getAttackStatusChance() {
+        return attackStatusChance;
+    }
 
     public DamageList getAttackDamageList() {
         return attackDamageList;

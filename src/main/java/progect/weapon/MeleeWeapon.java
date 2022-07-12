@@ -1,9 +1,7 @@
 package progect.weapon;
 
-import progect.damage.weapon.attacks.*;
 import progect.weapon.attacks.*;
 import progect.weapon.characters.CharactersMelee;
-import weapon.attacks.*;
 import progect.weapon.characters.Characters;
 
 public class MeleeWeapon extends Weapon implements AttackMeleeCreator{
