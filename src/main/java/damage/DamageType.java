@@ -1,8 +1,0 @@
-package damage;
-
-public enum DamageType {
-    SLASH, IMPACT, PUNCTURE,  ELECTRICITY, TOXIC, HEAT, COLD, RADIATION,
-    MAGNETIC, BLAST, CORROSIVE, GAS, VIRAL, TRUE, VOID
-
-}
-
