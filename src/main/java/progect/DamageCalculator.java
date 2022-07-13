@@ -18,7 +18,7 @@ public class DamageCalculator {
         return damages;
     }
 
-    public static DamageList calculateDamageBeforeResist(DamageList dList, double resist){
+    public static DamageList calculateDamageAfterResist(DamageList dList, double resist){
         DamageList damages = new DamageList();
         for (Damage d: dList) {
             Damage damage = new Damage(d.getAmountDamage() * resist, d.getDamageType());
@@ -91,8 +91,14 @@ public class DamageCalculator {
         resist = hpArmor/(hpArmor + 300);
         return resist;
     }
+
+//    public static double calculateDamageByArmor(Armor armor, Damage damage){
+//        double arm = armor.getHitPoint();
+//        arm = arm * ()
+//        return
+//    }
     
-    public static DamageList calculateDamageBeforeArmResist(DamageList damages, Armor armor){
+    public static DamageList calculateDamageAfterArmResist(DamageList damages, Armor armor){
         DamageList damageList = new DamageList(damages);
         double resist;
         resist = calculateArmorResist(armor);
@@ -102,7 +108,7 @@ public class DamageCalculator {
             System.out.println(d.getAmountDamage());
         }
 
-        damageList = calculateDamageBeforeResist(damageList, resist);
+        damageList = calculateDamageAfterResist(damageList, resist);
 
 
         return damageList;
@@ -119,6 +125,7 @@ public class DamageCalculator {
             }else {
                 Armor armor = ((Health) hitPoint).getArmor();
                 damages = calculateWeaknessResistance(damages, armor.getWeaknessDamageList(), armor.getResistanceDamageList());
+
 
             }
         }

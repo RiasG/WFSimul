@@ -10,8 +10,6 @@ import progect.enemy.Health;
 import progect.weapon.attacks.Attack;
 import progect.weapon.attacks.PrimaryAttack;
 
-import javax.crypto.spec.PSource;
-
 import static progect.DamageCalculator.calculateCritMult;
 import static progect.DamageCalculator.calculateCriticalDamageList;
 
@@ -103,11 +101,18 @@ public class DamageCalculatorTest {
 
         Armor armor = new Armor(1000, weakness,resistance);
         System.out.println(DamageCalculator.calculateArmorResist(armor));
-        damageList = DamageCalculator.calculateDamageBeforeArmResist(damageList,armor);
+        damageList = DamageCalculator.calculateDamageAfterArmResist(damageList,armor);
 
         for (Damage d: damageList) {
             System.out.println(d.getAmountDamage());
         }
+
+        Health health = new Health(1000, new DamageList(), new DamageList());
+        for (Damage d: damageList ) {
+            health.takeDamage(d.getAmountDamage());
+        }
+        System.out.println(health.getHitPoint());
+
 
     }
 }
