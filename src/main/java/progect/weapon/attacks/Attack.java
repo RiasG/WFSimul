@@ -34,4 +34,20 @@ public abstract class Attack {
     public DamageList getAttackDamageList() {
         return attackDamageList;
     }
+
+    public void setAttackDamageList(DamageList attackDamageList) {
+        this.attackDamageList = attackDamageList;
+    }
+
+    public void setAttackCritMulti(double attackCritMulti) {
+        this.attackCritMulti = attackCritMulti;
+    }
+
+    public void setAttackCritChance(double attackCritChance) {
+        this.attackCritChance = attackCritChance;
+    }
+
+    public void setAttackStatusChance(double attackStatusChance) {
+        this.attackStatusChance = attackStatusChance;
+    }
 }

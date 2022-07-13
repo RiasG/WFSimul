@@ -7,6 +7,7 @@ import progect.enemy.HitPoint;
 import progect.weapon.attacks.Attack;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class DamageCalculator {
 
@@ -50,9 +51,8 @@ public class DamageCalculator {
         return dList;
     }
 
-    public static DamageList calculateWeaknessResistance(DamageList damages, DamageList weaknessDL, DamageList resistanceDL){
-        damages = new DamageList(damages);
-
+    public static DamageList calculateWeaknessResistance(DamageList attackList, DamageList weaknessDL, DamageList resistanceDL){
+        DamageList damages = new DamageList(attackList);
 
         for (int i = 0; i < damages.size(); i++) {
             for (int j = 0; j < weaknessDL.size(); j++){
@@ -67,20 +67,19 @@ public class DamageCalculator {
                 }
             }
         }
+
         return damages;
     }
 
     public static void calculateDamageByHitPoint(HitPoint hitPoint, Attack attack){
-        DamageList criticalDamageList = calculateCriticalDamageList(attack.getAttackDamageList(),
+        DamageList damages = calculateCriticalDamageList(attack.getAttackDamageList(),
                 attack.getAttackCritChance(),attack.getAttackCritMulti());
         if (!(hitPoint instanceof Armor)){
-            calculateWeaknessResistance(criticalDamageList, hitPoint.getWeaknessDamageList(), hitPoint.getResistanceDamageList());
-            for (Damage d:attack.getAttackDamageList()) {
-                System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
-            }
-            for (int i = 0; i < criticalDamageList.size(); i++)
-                hitPoint.takeDamage(criticalDamageList.get(i).getAmountDamage());
+            damages = calculateWeaknessResistance(damages, hitPoint.getWeaknessDamageList(), hitPoint.getResistanceDamageList());
+            for (int i = 0; i < damages.size(); i++)
+                hitPoint.takeDamage(damages.get(i).getAmountDamage());
         }
+
 
     }
 

@@ -6,6 +6,8 @@ import progect.damage.Damage;
 import progect.damage.DamageList;
 import progect.damage.DamageType;
 import progect.enemy.Health;
+import progect.weapon.attacks.Attack;
+import progect.weapon.attacks.PrimaryAttack;
 
 import static progect.DamageCalculator.calculateCritDamage;
 import static progect.DamageCalculator.calculateCriticalDamageList;
@@ -63,16 +65,19 @@ public class DamageCalculatorTest {
         DamageList dList = new DamageList(damageList);
 
 
-        for (Damage d:damageList) {
-            System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
-        }
-        dList = DamageCalculator.calculateWeaknessResistance(damageList,weakness,resistance);
-
-        for (Damage d:damageList) {
-            System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
-        }
-
+        double cChance = 0.5;
+        double cMult = 2;
         Health health = new Health(1000,weakness,resistance);
-        //DamageCalculator.calculateDamageByHitPoint(health,);
+        Attack attack = new PrimaryAttack(damageList,cMult,cChance,0.5,3);
+
+        System.out.println(health.getHitPoint());
+
+        DamageCalculator.calculateDamageByHitPoint(health, attack);
+
+        System.out.println(health.getHitPoint());
+        for (Damage d: attack.getAttackDamageList()) {
+            System.out.println(d.getAmountDamage());
+
+        }
     }
 }
