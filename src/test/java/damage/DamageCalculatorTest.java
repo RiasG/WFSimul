@@ -5,6 +5,7 @@ import progect.DamageCalculator;
 import progect.damage.Damage;
 import progect.damage.DamageList;
 import progect.damage.DamageType;
+import progect.enemy.Armor;
 import progect.enemy.Health;
 import progect.weapon.attacks.Attack;
 import progect.weapon.attacks.PrimaryAttack;
@@ -83,5 +84,30 @@ public class DamageCalculatorTest {
         for (int i = 0; i < damageList.size(); i++)
             health.takeDamage(damageList.get(i).getAmountDamage());
         System.out.println(health.getHitPoint());
+    }
+
+    @Test
+    public void testCalculateArmorResist(){
+        DamageList damageList = new DamageList();
+        damageList.add(new Damage(100, DamageType.VIRAL));
+        damageList.add(new Damage(100,DamageType.SLASH));
+        damageList.add(new Damage(100,DamageType.CORROSIVE));
+
+
+        DamageList weakness = new DamageList();
+        DamageList resistance = new DamageList();
+        weakness.add(new Damage(0.25, DamageType.VIRAL));
+        weakness.add(new Damage(0.5,DamageType.CORROSIVE));
+        resistance.add(new Damage(0.5,DamageType.RADIATION));
+        resistance.add(new Damage(0.5,DamageType.SLASH));
+
+        Armor armor = new Armor(1000, weakness,resistance);
+        System.out.println(DamageCalculator.calculateArmorResist(armor));
+        damageList = DamageCalculator.calculateDamageBeforeArmResist(damageList,armor);
+
+        for (Damage d: damageList) {
+            System.out.println(d.getAmountDamage());
+        }
+
     }
 }

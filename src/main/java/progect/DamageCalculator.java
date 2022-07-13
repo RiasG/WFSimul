@@ -7,14 +7,22 @@ import progect.enemy.Health;
 import progect.enemy.HitPoint;
 import progect.weapon.attacks.Attack;
 
-import javax.swing.*;
-
 public class DamageCalculator {
 
     public static DamageList multiplyDamageList(DamageList dList, double mult){
         DamageList damages = new DamageList();
         for (Damage d: dList) {
             Damage damage = new Damage(d.getAmountDamage() * mult, d.getDamageType());
+            damages.add(damage);
+        }
+        return damages;
+    }
+
+    public static DamageList calculateDamageBeforeResist(DamageList dList, double resist){
+        DamageList damages = new DamageList();
+        for (Damage d: dList) {
+            Damage damage = new Damage(d.getAmountDamage() * resist, d.getDamageType());
+            damage.setAmountDamage(d.getAmountDamage() - damage.getAmountDamage());
             damages.add(damage);
         }
         return damages;
@@ -77,18 +85,27 @@ public class DamageCalculator {
     }
 
 
-    public double calculateArmorResist(Armor armor){
-        double resist = 0;
+    public static double calculateArmorResist(Armor armor){
+        double resist;
         double hpArmor = armor.getHitPoint();
-
-
-
+        resist = hpArmor/(hpArmor + 300);
         return resist;
     }
-    public static DamageList calculateDamageByArmorResist(DamageList damages, Armor armor){
+    
+    public static DamageList calculateDamageBeforeArmResist(DamageList damages, Armor armor){
+        DamageList damageList = new DamageList(damages);
+        double resist;
+        resist = calculateArmorResist(armor);
+        damageList = calculateWeaknessResistance(damageList,armor.getWeaknessDamageList(),armor.getResistanceDamageList());
+        System.out.println("Weakness Resist");
+        for (Damage d: damageList) {
+            System.out.println(d.getAmountDamage());
+        }
+
+        damageList = calculateDamageBeforeResist(damageList, resist);
 
 
-        return null;
+        return damageList;
     }
 
     public static DamageList calculateDamageByHitPoint(HitPoint hitPoint, Attack attack){
