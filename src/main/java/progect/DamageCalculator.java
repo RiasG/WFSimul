@@ -64,6 +64,15 @@ public class DamageCalculator {
         return dList;
     }
 
+    public static void calculateDamageByEffectiveArmor(Armor armor, Damage damage, boolean resOrWeak){
+        Damage d = new Damage(damage);
+        if (resOrWeak == true){
+
+        }
+
+
+    }
+
     public static DamageList calculateWeaknessResistance(DamageList attackList, DamageList weaknessDL, DamageList resistanceDL){
         DamageList damages = new DamageList(attackList);
 
@@ -92,6 +101,10 @@ public class DamageCalculator {
         return resist;
     }
 
+    public static double calculateArmorResist(double hpArmor){
+        return hpArmor/(hpArmor + 300);
+    }
+
 //    public static double calculateDamageByArmor(Armor armor, Damage damage){
 //        double arm = armor.getHitPoint();
 //        arm = arm * ()
@@ -114,6 +127,7 @@ public class DamageCalculator {
         return damageList;
     }
 
+
     public static DamageList calculateDamageByHitPoint(HitPoint hitPoint, Attack attack){
         DamageList damages = calculateCriticalDamageList(attack.getAttackDamageList(),
                 attack.getAttackCritChance(),attack.getAttackCritMulti());
@@ -125,10 +139,48 @@ public class DamageCalculator {
             }else {
                 Armor armor = ((Health) hitPoint).getArmor();
                 damages = calculateWeaknessResistance(damages, armor.getWeaknessDamageList(), armor.getResistanceDamageList());
-
-
             }
         }
         return damages;
     }
+
+    public static DamageList calculateDamageByArmoredHealth(DamageList attackList, Armor armor){
+        DamageList damages = new DamageList(attackList);
+        DamageList weaknessDL = armor.getWeaknessDamageList();
+        DamageList resistanceDL = armor.getResistanceDamageList();
+
+        for (int i = 0; i < damages.size(); i++) {
+            for (int j = 0; j < weaknessDL.size(); j++){
+                if (damages.get(i).getDamageType() == weaknessDL.get(j).getDamageType()){
+                    double damage = damages.get(i).getAmountDamage();
+                    double weakness = armor.getWeaknessDamageList().get(j).getAmountDamage();
+                    double armHP = armor.getHitPoint();
+                    armHP -= (armHP * weakness);
+                    System.out.println("ArmHP = " + armHP);
+                    double resist = calculateArmorResist(armHP);
+                    System.out.println("Resist = " + resist);
+                    damages.get(i).setAmountDamage(damages.get(i).getAmountDamage() * resist);
+                    System.out.println("Damage = " + damages.get(i).getAmountDamage());
+                }
+            }
+
+            for (int j = 0; j < resistanceDL.size(); j++){
+                if (damages.get(i).getDamageType() == resistanceDL.get(j).getDamageType()){
+                    double damage = damages.get(i).getAmountDamage();
+                    double resistance = armor.getWeaknessDamageList().get(j).getAmountDamage();
+                    double armHP = armor.getHitPoint();
+                    armHP += (armHP * resistance);
+                    //System.out.println("ArmHP = " + armHP);
+                    double resist = calculateArmorResist(armHP);
+                    //System.out.println("Resist = " + resist);
+                    damage = damages.get(i).getAmountDamage() - damages.get(i).getAmountDamage() * resist;
+                    damages.get(i).setAmountDamage(damage);
+                    //System.out.println("Damage = " + damage);
+                }
+            }
+        }
+
+        return damages;
+    }
+
 }

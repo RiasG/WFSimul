@@ -99,9 +99,11 @@ public class DamageCalculatorTest {
         resistance.add(new Damage(0.5,DamageType.RADIATION));
         resistance.add(new Damage(0.5,DamageType.SLASH));
 
-        Armor armor = new Armor(1000, weakness,resistance);
+        Armor armor = new Armor(1000, weakness, resistance);
         System.out.println(DamageCalculator.calculateArmorResist(armor));
-        damageList = DamageCalculator.calculateDamageAfterArmResist(damageList,armor);
+        //damageList = DamageCalculator.calculateDamageAfterArmResist(damageList,armor);
+
+        damageList = DamageCalculator.calculateDamageByArmoredHealth(damageList, armor);
 
         for (Damage d: damageList) {
             System.out.println(d.getAmountDamage());
@@ -112,6 +114,10 @@ public class DamageCalculatorTest {
             health.takeDamage(d.getAmountDamage());
         }
         System.out.println(health.getHitPoint());
+
+
+
+
 
 
     }

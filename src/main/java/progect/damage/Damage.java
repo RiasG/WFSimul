@@ -11,6 +11,11 @@ public class Damage {
         this.damageType = damageType;
     }
 
+    public Damage(Damage damage) {
+        this.amountDamage = damage.getAmountDamage();
+        this.damageType = damage.getDamageType();
+    }
+
     public double getAmountDamage() {
         return amountDamage;
     }
