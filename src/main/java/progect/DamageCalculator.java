@@ -3,11 +3,11 @@ package progect;
 import progect.damage.Damage;
 import progect.damage.DamageList;
 import progect.enemy.Armor;
+import progect.enemy.Health;
 import progect.enemy.HitPoint;
 import progect.weapon.attacks.Attack;
 
-import java.util.LinkedList;
-import java.util.List;
+import javax.swing.*;
 
 public class DamageCalculator {
 
@@ -20,29 +20,34 @@ public class DamageCalculator {
         return damages;
     }
 
-    public static double calculateCritDamage(double critChance, double critMult){
-        double cMult = 1;
-        double rand = Math.random() * 100;
+    public static double calculateCritMult(double critChance, double critMult){
+        double cMult = critMult;
 
-        if (Math.floor(critChance) >= 1) {
-            cMult = critMult * Math.floor(critChance);
-            critChance = (critChance - (Math.floor(critChance))) * 100;
-            if (rand <= critChance) cMult += critMult;
-        }else{
-            critChance = critChance * 100;
-            if (rand <= critChance) cMult *= critMult;
-        }
-
-        //TODO изменить
-//        while (rand != 0)
+        cMult = cMult * calculateMult(critChance);
 
         return cMult;
     }
+
+    public static int calculateMult(double chance){
+        double chBuf = chance;
+        int res = 0;
+        double rand = Math.random() * 100;
+
+        while (chBuf >= 1) {
+            res += 1;
+            chBuf -= 1;
+        }
+        if (rand <= chBuf * 100) res += 1;
+
+        return  res;
+    }
+
+
     public static DamageList calculateCriticalDamageList(DamageList damageList, double critChance, double critMult){
         double cMult = 1;
         DamageList dList = damageList;
 
-        cMult = calculateCritDamage(critChance, critMult);
+        cMult = calculateCritMult(critChance, critMult);
 
         if (cMult > 1){
             dList = multiplyDamageList(damageList, cMult);
@@ -71,16 +76,35 @@ public class DamageCalculator {
         return damages;
     }
 
-    public static void calculateDamageByHitPoint(HitPoint hitPoint, Attack attack){
-        DamageList damages = calculateCriticalDamageList(attack.getAttackDamageList(),
-                attack.getAttackCritChance(),attack.getAttackCritMulti());
-        if (!(hitPoint instanceof Armor)){
-            damages = calculateWeaknessResistance(damages, hitPoint.getWeaknessDamageList(), hitPoint.getResistanceDamageList());
-            for (int i = 0; i < damages.size(); i++)
-                hitPoint.takeDamage(damages.get(i).getAmountDamage());
-        }
+
+    public double calculateArmorResist(Armor armor){
+        double resist = 0;
+        double hpArmor = armor.getHitPoint();
 
 
+
+        return resist;
+    }
+    public static DamageList calculateDamageByArmorResist(DamageList damages, Armor armor){
+
+
+        return null;
     }
 
+    public static DamageList calculateDamageByHitPoint(HitPoint hitPoint, Attack attack){
+        DamageList damages = calculateCriticalDamageList(attack.getAttackDamageList(),
+                attack.getAttackCritChance(),attack.getAttackCritMulti());
+        HitPoint hp = hitPoint;
+        if (hitPoint instanceof Health) {
+            if ((((Health)hitPoint).getArmor() == null) || (((Health)hitPoint).getArmor().getHitPoint() == 0)){
+                damages = calculateWeaknessResistance(damages, hitPoint.getWeaknessDamageList(), hitPoint.getResistanceDamageList());
+
+            }else {
+                Armor armor = ((Health) hitPoint).getArmor();
+                damages = calculateWeaknessResistance(damages, armor.getWeaknessDamageList(), armor.getResistanceDamageList());
+
+            }
+        }
+        return damages;
+    }
 }

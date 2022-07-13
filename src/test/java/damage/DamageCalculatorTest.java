@@ -9,7 +9,9 @@ import progect.enemy.Health;
 import progect.weapon.attacks.Attack;
 import progect.weapon.attacks.PrimaryAttack;
 
-import static progect.DamageCalculator.calculateCritDamage;
+import javax.crypto.spec.PSource;
+
+import static progect.DamageCalculator.calculateCritMult;
 import static progect.DamageCalculator.calculateCriticalDamageList;
 
 
@@ -18,9 +20,9 @@ public class DamageCalculatorTest {
 
     @Test
     public void testCalculate() {
-        double cChance = 1.7;
-        double cMult = 1.5;
-        System.out.println(calculateCritDamage(cChance,cMult));
+        double cChance = 1;
+        double cMult = 0.5;
+        System.out.println(calculateCritMult(cChance,cMult));
         System.out.println(cChance + " "+ cMult);
 
         DamageList damageList = new DamageList();
@@ -34,13 +36,12 @@ public class DamageCalculatorTest {
         }
         damageList = calculateCriticalDamageList(damageList,cChance,cMult);
 
-
         for (Damage d:damageList) {
             System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
 
         }
 
-        //DamageCalculator.calculateDamageOnHitPoint(new AlloyArmor(),new HeavyAttackMelee());
+        System.out.println(DamageCalculator.calculateMult(3.5));
 
 
 
@@ -79,5 +80,8 @@ public class DamageCalculatorTest {
             System.out.println(d.getAmountDamage());
 
         }
+        for (int i = 0; i < damageList.size(); i++)
+            health.takeDamage(damageList.get(i).getAmountDamage());
+        System.out.println(health.getHitPoint());
     }
 }
