@@ -13,6 +13,30 @@ public class EnemyLifeCondition {
         this.shield = shield;
     }
 
+    public Health getHealth() {
+        return health;
+    }
+
+    public void setHealth(Health health) {
+        this.health = health;
+    }
+
+    public Armor getArmor() {
+        return armor;
+    }
+
+    public void setArmor(Armor armor) {
+        this.armor = armor;
+    }
+
+    public Shield getShield() {
+        return shield;
+    }
+
+    public void setShield(Shield shield) {
+        this.shield = shield;
+    }
+
     public void takeDamage(DamageList damageList){
 
     }
