@@ -115,12 +115,12 @@ public class DamageCalculator {
 
 
     public static DamageList calculateHealthDamage(DamageList attackList, Health health){
-        DamageList damages = new DamageList(attackList);
+        DamageList damages = new DamageList();
         DamageList weakResDL = health.getWeaknessResistanceList();
-        //DamageList resistanceDL = health.getResistanceDamageList();
 
-        for (int i = 0; i < damages.size(); i++) {
-            for (int j = 0; j < weakResDL.size(); j++){
+        for (int i = 0; i < attackList.size(); i++) {
+            damages.add(new Damage(attackList.get(i).getAmountDamage(), attackList.get(i).getDamageType()));
+            for (int j = 0; j < damages.size(); j++){
                 if (damages.get(i).getDamageType() == weakResDL.get(j).getDamageType()){
                     System.out.println("DamageType = " + weakResDL.get(j).getDamageType());
                     damages.get(i).setAmountDamage(
@@ -140,11 +140,12 @@ public class DamageCalculator {
         return damages;
     }
     public static DamageList calculateArmoredDamage(DamageList attackList, Armor armor){
-        DamageList damages = new DamageList(attackList);
+        DamageList damages = new DamageList();
         DamageList weakResDL = armor.getWeaknessResistanceList();
         //DamageList resistanceDL = armor.getResistanceDamageList();
 
-        for (int i = 0; i < damages.size(); i++) {
+        for (int i = 0; i < attackList.size(); i++) {
+            damages.add(new Damage(attackList.get(i).getAmountDamage(), attackList.get(i).getDamageType()));
 //            System.out.println("Weakness -------------------");
             for (int j = 0; j < weakResDL.size(); j++){
                 if (damages.get(i).getDamageType() == weakResDL.get(j).getDamageType()){

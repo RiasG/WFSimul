@@ -64,14 +64,17 @@ public class DamageCalculatorTest {
 
         Health health = new Health(1000, weakRes);
 
+
+
+        DamageList dL = new DamageList(DamageCalculator.calculateHealthDamage(damageList, health));
+
+        for (Damage d: dL) {
+            System.out.println(d.getAmountDamage());
+        }
         for (Damage d: damageList) {
             System.out.println(d.getAmountDamage());
         }
-
-        damageList = DamageCalculator.calculateHealthDamage(damageList, health);
-
-
-        for (Damage d: damageList ) {
+        for (Damage d: dL) {
             health.takeDamage(d.getAmountDamage());
         }
         System.out.println(health.getHitPoint());
@@ -95,14 +98,18 @@ public class DamageCalculatorTest {
 
         Armor armor = new Armor(1000, weakResist);
 
-        damageList = DamageCalculator.calculateArmoredDamage(damageList, armor);
+        DamageList dList = new DamageList(DamageCalculator.calculateArmoredDamage(damageList, armor));
 
+
+        for (Damage d: dList) {
+            System.out.println(d.getAmountDamage());
+        }
         for (Damage d: damageList) {
             System.out.println(d.getAmountDamage());
         }
 
         Health health = new Health(1000, new DamageList());
-        for (Damage d: damageList ) {
+        for (Damage d: dList ) {
             health.takeDamage(d.getAmountDamage());
         }
         System.out.println(health.getHitPoint());
