@@ -18,7 +18,7 @@ public class DamageCalculatorTest {
 
 
     @Test
-    public void testCalculate() {
+    public void testCalculateCrit() {
         double cChance = 1;
         double cMult = 0.5;
         System.out.println(calculateCritMult(cChance,cMult));
@@ -47,7 +47,7 @@ public class DamageCalculatorTest {
     }
 
     @Test
-    public void testCalculateWeaknessResist(){
+    public void testCalculateHealthDamage(){
         DamageList damageList = new DamageList();
         damageList.add(new Damage(40, DamageType.VIRAL));
         damageList.add(new Damage(10,DamageType.RADIATION));
@@ -72,10 +72,16 @@ public class DamageCalculatorTest {
 
         System.out.println(health.getHitPoint());
 
-        DamageCalculator.calculateDamageByHitPoint(health, attack);
 
-        System.out.println(health.getHitPoint());
+        dList = DamageCalculator.calculateHealthDamage(attack.getAttackDamageList(),health);
+
+
         for (Damage d: attack.getAttackDamageList()) {
+            System.out.println(d.getAmountDamage());
+
+        }
+
+        for (Damage d: dList) {
             System.out.println(d.getAmountDamage());
 
         }
@@ -85,7 +91,7 @@ public class DamageCalculatorTest {
     }
 
     @Test
-    public void testCalculateArmorResist(){
+    public void testCalculateArmorDamage(){
         DamageList damageList = new DamageList();
         damageList.add(new Damage(100, DamageType.VIRAL));
         damageList.add(new Damage(100,DamageType.SLASH));
@@ -101,9 +107,9 @@ public class DamageCalculatorTest {
 
         Armor armor = new Armor(1000, weakness, resistance);
         System.out.println(DamageCalculator.calculateArmorResist(armor));
-        //damageList = DamageCalculator.calculateDamageAfterArmResist(damageList,armor);
 
-        damageList = DamageCalculator.calculateDamageByArmoredHealth(damageList, armor);
+
+        damageList = DamageCalculator.calculateArmoredDamage(damageList, armor);
 
         for (Damage d: damageList) {
             System.out.println(d.getAmountDamage());
@@ -114,9 +120,6 @@ public class DamageCalculatorTest {
             health.takeDamage(d.getAmountDamage());
         }
         System.out.println(health.getHitPoint());
-
-
-
 
 
 
