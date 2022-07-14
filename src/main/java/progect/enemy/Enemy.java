@@ -5,9 +5,9 @@ import progect.weapon.attacks.Attack;
 import progect.weapon.attacks.PrimaryAttack;
 
 public class Enemy {
-
    private EnemyLifeCondition enemyLifeCondition;
 
+   private int enemyLevel;
    public Enemy(EnemyLifeCondition enemyLifeCondition) {
       this.enemyLifeCondition = enemyLifeCondition;
    }
@@ -16,7 +16,7 @@ public class Enemy {
       return enemyLifeCondition;
    }
 
-   public void setEnemyLifeBar(EnemyLifeCondition enemyLifeCondition) {
+   public void setEnemyLifeCondition(EnemyLifeCondition enemyLifeCondition) {
       this.enemyLifeCondition = enemyLifeCondition;
    }
 

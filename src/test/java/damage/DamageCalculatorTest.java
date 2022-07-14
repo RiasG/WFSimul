@@ -94,16 +94,17 @@ public class DamageCalculatorTest {
     public void testCalculateArmorDamage(){
         DamageList damageList = new DamageList();
         damageList.add(new Damage(100, DamageType.VIRAL));
-        damageList.add(new Damage(100,DamageType.SLASH));
         damageList.add(new Damage(100,DamageType.CORROSIVE));
+        damageList.add(new Damage(100,DamageType.RADIATION));
+        damageList.add(new Damage(100,DamageType.SLASH));
 
 
         DamageList weakness = new DamageList();
         DamageList resistance = new DamageList();
-        weakness.add(new Damage(0.25, DamageType.VIRAL));
-        weakness.add(new Damage(0.5,DamageType.CORROSIVE));
-        resistance.add(new Damage(0.5,DamageType.RADIATION));
-        resistance.add(new Damage(0.5,DamageType.SLASH));
+        weakness.add(new Damage(-0.25, DamageType.VIRAL));
+        weakness.add(new Damage(-0.75,DamageType.CORROSIVE));
+        weakness.add(new Damage(0.5,DamageType.RADIATION));
+        weakness.add(new Damage(0.75,DamageType.SLASH));
 
         Armor armor = new Armor(1000, weakness, resistance);
         System.out.println(DamageCalculator.calculateArmorResist(armor));

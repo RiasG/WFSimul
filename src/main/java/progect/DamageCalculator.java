@@ -141,33 +141,36 @@ public class DamageCalculator {
         DamageList resistanceDL = armor.getResistanceDamageList();
 
         for (int i = 0; i < damages.size(); i++) {
+            System.out.println("Weakness -------------------");
             for (int j = 0; j < weaknessDL.size(); j++){
                 if (damages.get(i).getDamageType() == weaknessDL.get(j).getDamageType()){
+                    System.out.println("DamageType = " + weaknessDL.get(j).getDamageType());
                     //double damage = damages.get(i).getAmountDamage();
                     double weakness = armor.getWeaknessDamageList().get(j).getAmountDamage();
                     double armHP = armor.getHitPoint();
-                    armHP -= (armHP * weakness);
+                    armHP = armHP * (1 + weakness);
                     System.out.println("ArmHP = " + armHP);
                     double resist = calculateArmorResist(armHP);
                     System.out.println("Resist = " + resist);
-                    damages.get(i).setAmountDamage(damages.get(i).getAmountDamage() * resist);
+                    damages.get(i).setAmountDamage(damages.get(i).getAmountDamage() * (1 - resist));
                     System.out.println("Damage = " + damages.get(i).getAmountDamage());
                 }
             }
-
-            for (int j = 0; j < resistanceDL.size(); j++){
-                if (damages.get(i).getDamageType() == resistanceDL.get(j).getDamageType()){
-                    //double damage = damages.get(i).getAmountDamage();
-                    double resistance = armor.getWeaknessDamageList().get(j).getAmountDamage();
-                    double armHP = armor.getHitPoint();
-                    armHP += (armHP * resistance);
-                    //System.out.println("ArmHP = " + armHP);
-                    double resist = calculateArmorResist(armHP);
-                    //System.out.println("Resist = " + resist);
-                    damages.get(i).setAmountDamage(damages.get(i).getAmountDamage() - damages.get(i).getAmountDamage() * resist);
-                    //System.out.println("Damage = " + damages.get(i).getAmountDamage());
-                }
-            }
+//            System.out.println("Resistance -------------------");
+//            for (int j = 0; j < resistanceDL.size(); j++){
+//                if (damages.get(i).getDamageType() == resistanceDL.get(j).getDamageType()){
+//                    System.out.println("DamageType = " + resistanceDL.get(j).getDamageType());
+//                    //double damage = damages.get(i).getAmountDamage();
+//                    double resistance = armor.getResistanceDamageList().get(j).getAmountDamage();
+//                    double armHP = armor.getHitPoint();
+//                    armHP = armHP * (1 + resistance);
+//                    System.out.println("ArmHP = " + armHP);
+//                    double resist = calculateArmorResist(armHP);
+//                    System.out.println("Resist = " + resist);
+//                    damages.get(i).setAmountDamage(damages.get(i).getAmountDamage() * (1 - resist));
+//                    System.out.println("Damage = " + damages.get(i).getAmountDamage());
+//                }
+//            }
         }
 
         return damages;
