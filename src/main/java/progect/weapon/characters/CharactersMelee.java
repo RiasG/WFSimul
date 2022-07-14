@@ -3,7 +3,7 @@ package progect.weapon.characters;
 
 import progect.damage.Damage;
 import progect.damage.DamageList;
-import progect.weapon.NoiseLevel;
+import progect.weapon.utility.NoiseLevel;
 
 public class CharactersMelee extends Characters{
 

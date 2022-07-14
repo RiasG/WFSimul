@@ -7,11 +7,8 @@ public class Armor extends HitPoint {
     public Armor() {
     }
 
-    public Armor(double hitPoint, DamageList weaknessDamageList, DamageList resistanceDamageList) {
-        super(hitPoint, weaknessDamageList, resistanceDamageList);
+
+    public Armor(double hitPoint, DamageList weaknessDamageList) {
+        super(hitPoint, weaknessDamageList);
     }
-
-
-
-
 }

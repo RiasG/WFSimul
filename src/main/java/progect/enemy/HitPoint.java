@@ -4,16 +4,15 @@ import progect.damage.DamageList;
 
 public abstract class HitPoint {
     private double hitPoint;
-    private DamageList weaknessDamageList;
-    private DamageList resistanceDamageList;
+    private DamageList weaknessResistanceList;
 
     public HitPoint() {
     }
 
-    public HitPoint(double hitPoint, DamageList weaknessDamageList, DamageList resistanceDamageList) {
+
+    public HitPoint(double hitPoint, DamageList weaknessResistanceList) {
         this.hitPoint = hitPoint;
-        this.weaknessDamageList = weaknessDamageList;
-        this.resistanceDamageList = resistanceDamageList;
+        this.weaknessResistanceList = weaknessResistanceList;
     }
 
     public double getHitPoint() {
@@ -24,20 +23,12 @@ public abstract class HitPoint {
         this.hitPoint = hitPoint;
     }
 
-    public DamageList getWeaknessDamageList() {
-        return weaknessDamageList;
+    public DamageList getWeaknessResistanceList() {
+        return weaknessResistanceList;
     }
 
-    public void setWeaknessDamageList(DamageList weaknessDamageList) {
-        this.weaknessDamageList = weaknessDamageList;
-    }
-
-    public DamageList getResistanceDamageList() {
-        return resistanceDamageList;
-    }
-
-    public void setResistanceDamageList(DamageList resistanceDamageList) {
-        this.resistanceDamageList = resistanceDamageList;
+    public void setWeaknessResistanceList(DamageList weaknessResistanceList) {
+        this.weaknessResistanceList = weaknessResistanceList;
     }
 
     public boolean takeDamage(double damage){

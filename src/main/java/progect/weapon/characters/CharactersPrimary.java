@@ -1,7 +1,7 @@
 package progect.weapon.characters;
 
 import progect.damage.DamageList;
-import progect.weapon.NoiseLevel;
+import progect.weapon.utility.NoiseLevel;
 
 public class CharactersPrimary extends Characters{
     private double multiShot;

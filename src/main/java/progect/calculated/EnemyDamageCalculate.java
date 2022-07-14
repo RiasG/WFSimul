@@ -1,4 +1,4 @@
-package progect.damage;
+package progect.calculated;
 
 public class EnemyDamageCalculate  {
 

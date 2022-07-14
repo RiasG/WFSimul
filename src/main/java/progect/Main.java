@@ -4,7 +4,7 @@ import progect.damage.Damage;
 import progect.damage.DamageList;
 import progect.damage.DamageType;
 import progect.weapon.MeleeWeapon;
-import progect.weapon.NoiseLevel;
+import progect.weapon.utility.NoiseLevel;
 import progect.weapon.PrimaryWeapon;
 import progect.weapon.Weapon;
 import progect.weapon.attacks.Attack;

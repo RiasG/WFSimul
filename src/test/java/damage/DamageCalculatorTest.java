@@ -1,17 +1,17 @@
 package damage;
 
 import org.junit.Test;
-import progect.DamageCalculator;
+import progect.calculated.DamageCalculator;
 import progect.damage.Damage;
 import progect.damage.DamageList;
 import progect.damage.DamageType;
 import progect.enemy.Armor;
 import progect.enemy.Health;
-import progect.weapon.attacks.Attack;
-import progect.weapon.attacks.PrimaryAttack;
+import progect.enemy.HitPoint;
+import progect.enemy.Shield;
 
-import static progect.DamageCalculator.calculateCritMult;
-import static progect.DamageCalculator.calculateCriticalDamageList;
+import static progect.calculated.DamageCalculator.calculateCritMult;
+import static progect.calculated.DamageCalculator.calculateCriticalDamageList;
 
 
 public class DamageCalculatorTest {
@@ -55,14 +55,14 @@ public class DamageCalculatorTest {
         damageList.add(new Damage(100, DamageType.SLASH));
 
 
-        DamageList weakness = new DamageList();
-        DamageList resistance = new DamageList();
-        weakness.add(new Damage(-0.25, DamageType.VIRAL));
-        weakness.add(new Damage(-0.75, DamageType.CORROSIVE));
-        weakness.add(new Damage(0.5, DamageType.RADIATION));
-        weakness.add(new Damage(0.75, DamageType.SLASH));
+        DamageList weakRes = new DamageList();
 
-        Health health = new Health(1000, weakness, resistance);
+        weakRes.add(new Damage(-0.25, DamageType.VIRAL));
+        weakRes.add(new Damage(-0.75, DamageType.CORROSIVE));
+        weakRes.add(new Damage(0.5, DamageType.RADIATION));
+        weakRes.add(new Damage(0.75, DamageType.SLASH));
+
+        Health health = new Health(1000, weakRes);
 
         for (Damage d: damageList) {
             System.out.println(d.getAmountDamage());
@@ -87,16 +87,13 @@ public class DamageCalculatorTest {
         damageList.add(new Damage(100,DamageType.SLASH));
 
 
-        DamageList weakness = new DamageList();
-        DamageList resistance = new DamageList();
-        weakness.add(new Damage(-0.25, DamageType.VIRAL));
-        weakness.add(new Damage(-0.75,DamageType.CORROSIVE));
-        weakness.add(new Damage(0.5,DamageType.RADIATION));
-        weakness.add(new Damage(0.75,DamageType.SLASH));
+        DamageList weakResist = new DamageList();
+        weakResist.add(new Damage(-0.25, DamageType.VIRAL));
+        weakResist.add(new Damage(-0.75,DamageType.CORROSIVE));
+        weakResist.add(new Damage(0.5,DamageType.RADIATION));
+        weakResist.add(new Damage(0.75,DamageType.SLASH));
 
-        Armor armor = new Armor(1000, weakness, resistance);
-        System.out.println(DamageCalculator.calculateArmorResist(armor));
-
+        Armor armor = new Armor(1000, weakResist);
 
         damageList = DamageCalculator.calculateArmoredDamage(damageList, armor);
 
@@ -104,11 +101,14 @@ public class DamageCalculatorTest {
             System.out.println(d.getAmountDamage());
         }
 
-        Health health = new Health(1000, new DamageList(), new DamageList());
+        Health health = new Health(1000, new DamageList());
         for (Damage d: damageList ) {
             health.takeDamage(d.getAmountDamage());
         }
         System.out.println(health.getHitPoint());
+
+
+
 
 
 
