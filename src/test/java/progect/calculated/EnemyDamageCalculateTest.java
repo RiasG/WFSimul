@@ -50,9 +50,10 @@ public class EnemyDamageCalculateTest {
 
         EnemyLifeCondition enemyLife = new EnemyLifeCondition(health, armor, shield);
 
-        Attack attack = new PrimaryAttack(damageList,3,0.7,1,2);
+        Attack attack = new PrimaryAttack(damageList,3,1,1,2);
 
         EnemyDamageCalculate.calculateDamageForEnemy(enemyLife,attack);
+
 
     }
 

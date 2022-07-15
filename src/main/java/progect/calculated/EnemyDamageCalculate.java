@@ -10,14 +10,16 @@ public class EnemyDamageCalculate extends DamageCalculator{
 
 
     public static void calculateDamageForEnemy(EnemyLifeCondition life, Attack attack){
-        DamageList damages = attack.getAttackDamageList();
+        DamageList damages;
         Health health = life.getHealth();
         Armor armor = life.getArmor();
         Shield shield = life.getShield();
 
-        damages = calculateCriticalDamageList(damages,attack.getAttackCritChance(),attack.getAttackCritMulti());
+        damages = calculateCriticalDamageList(attack.getAttackDamageList(),attack.getAttackCritChance(),attack.getAttackCritMulti());
 
-        for (Damage d: damages) System.out.println(d.getAmountDamage() + " " + d.getDamageType().name());
+        for (Damage d: damages) {
+            System.out.println(d.getAmountDamage() + " " + d.getDamageType().name());
+        }
 
 
         if (shield != null && shield.getHitPoint() != 0){
