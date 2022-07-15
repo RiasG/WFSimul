@@ -54,6 +54,12 @@ public class EnemyDamageCalculateTest {
 
         EnemyDamageCalculate.calculateDamageForEnemy(enemyLife,attack);
 
+        for (Damage d:attack.getAttackDamageList()){
+            System.out.println("Attack DL = " + d.getAmountDamage());
+        }
+
+        System.out.println("Enemy shield = " + enemyLife.getShield().getHitPoint());
+
 
     }
 

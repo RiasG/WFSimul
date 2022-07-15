@@ -12,4 +12,15 @@ public class DamageList extends LinkedList<Damage> {
         super(c);
     }
 
+    public double getDamageSum(){
+        double sum = 0;
+
+        for (Damage d:this) {
+            sum += d.getAmountDamage();
+        }
+
+        return sum;
+    }
+
+
 }

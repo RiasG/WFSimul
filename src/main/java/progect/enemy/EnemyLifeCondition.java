@@ -13,6 +13,10 @@ public class EnemyLifeCondition {
         this.shield = shield;
     }
 
+    public EnemyLifeCondition() {
+
+    }
+
     public Health getHealth() {
         return health;
     }
