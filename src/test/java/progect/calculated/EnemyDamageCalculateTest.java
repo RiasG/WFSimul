@@ -63,4 +63,63 @@ public class EnemyDamageCalculateTest {
 
     }
 
+    @Test
+    public void testTakeDamage(){
+        DamageList damageList = new DamageList();
+        damageList.add(new Damage(100, DamageType.VIRAL));
+        damageList.add(new Damage(100, DamageType.CORROSIVE));
+        damageList.add(new Damage(100, DamageType.RADIATION));
+        damageList.add(new Damage(100, DamageType.SLASH));
+
+
+        DamageList weakResHealth = new DamageList();
+        Health health = new Health(400, weakResHealth);
+
+        damageList = EnemyDamageCalculate.calculateTakeDamage(damageList,health);
+
+        for (Damage d : damageList){
+            System.out.println("Attack DL = " + d.getAmountDamage());
+        }
+
+        System.out.println("HP " + health.getHitPoint());
+
+        damageList = new DamageList();
+        damageList.add(new Damage(345, DamageType.VIRAL));
+        damageList.add(new Damage(284, DamageType.CORROSIVE));
+        damageList.add(new Damage(54, DamageType.RADIATION));
+        damageList.add(new Damage(732, DamageType.SLASH));
+
+
+
+        health = new Health(500, weakResHealth);
+
+        damageList = EnemyDamageCalculate.calculateTakeDamage(damageList,health);
+
+        for (Damage d : damageList){
+            System.out.println("Attack DL = " + d.getAmountDamage());
+        }
+
+        System.out.println("HP " + health.getHitPoint());
+
+
+        damageList = new DamageList();
+        damageList.add(new Damage(10, DamageType.VIRAL));
+        damageList.add(new Damage(43, DamageType.CORROSIVE));
+        damageList.add(new Damage(23, DamageType.RADIATION));
+        damageList.add(new Damage(45, DamageType.SLASH));
+
+
+
+        health = new Health(500, weakResHealth);
+
+        damageList = EnemyDamageCalculate.calculateTakeDamage(damageList,health);
+
+        for (Damage d : damageList){
+            System.out.println("Attack DL = " + d.getAmountDamage());
+        }
+
+        System.out.println("HP " + health.getHitPoint());
+
+    }
+
 }

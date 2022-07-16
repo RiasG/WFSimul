@@ -132,4 +132,20 @@ public class DamageCalculatorTest {
         System.out.println(health.getHitPoint());
 
     }
+
+    @Test
+    public void testCalculateDamagePercent(){
+        DamageList damageList = new DamageList();
+        damageList.add(new Damage(324, DamageType.VIRAL));
+        damageList.add(new Damage(12,DamageType.CORROSIVE));
+        damageList.add(new Damage(73,DamageType.RADIATION));
+        damageList.add(new Damage(252,DamageType.SLASH));
+
+        damageList = DamageCalculator.calculateDamagePercent(damageList);
+
+        for (Damage d: damageList) {
+            System.out.println(d.getAmountDamage() + " " + d.getDamagePercent());
+        }
+
+    }
 }

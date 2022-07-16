@@ -43,19 +43,28 @@ public class EnemyDamageCalculate extends DamageCalculator{
 
         }
     }
-    public void calculateTakeDamage(DamageList damages, HitPoint hitPoint){
-
-        double hp = hitPoint.getHitPoint();
-        double amountDamage;
+    public static DamageList calculateTakeDamage(DamageList damageList, HitPoint hitPoint){
+        DamageList damages = calculateDamagePercent(damageList);;
         double damageSum = damages.getDamageSum();
-        if (damageSum > 0 || hp > 0){
+        double hp = hitPoint.getHitPoint();
+
+        double amountDamage;
+
+        if (damageSum > 0 && hp > 0){
             if (hp >= damageSum){
                 hitPoint.setHitPoint(hp - damageSum);
                 for (Damage d : damages) {d.setAmountDamage(0);}
             } else{
-
+                damageSum -= hp;
+                hitPoint.setHitPoint(0);
+                if (damageSum > 0.01){
+                    for (Damage d : damages) {
+                        d.setAmountDamage(damageSum * d.getDamagePercent());
+                    }
+                }else for (Damage d : damages) d.setAmountDamage(0);
             }
         }
+        return damages;
     }
 
    /* public void calculateTakeDamage(DamageList damages, HitPoint hitPoint){

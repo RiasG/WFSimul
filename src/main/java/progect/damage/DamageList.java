@@ -23,4 +23,6 @@ public class DamageList extends LinkedList<Damage> {
     }
 
 
+
+
 }

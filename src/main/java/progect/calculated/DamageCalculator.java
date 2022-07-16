@@ -138,4 +138,15 @@ public class DamageCalculator {
         return damages;
     }
 
+
+    public static DamageList calculateDamagePercent(DamageList damageList){
+        DamageList damages = new DamageList();
+        double damageSum = damageList.getDamageSum();
+        for (Damage d: damageList) {
+            damages.add(new Damage(d.getAmountDamage(), d.getDamageType(), d.getAmountDamage() / damageSum));
+        }
+
+        return damages;
+    }
+
 }
