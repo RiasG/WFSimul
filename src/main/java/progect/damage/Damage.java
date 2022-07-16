@@ -18,6 +18,7 @@ public class Damage {
     public Damage(Damage damage) {
         this.amountDamage = damage.getAmountDamage();
         this.damageType = damage.getDamageType();
+        this.damagePercent = damage.getDamagePercent();
     }
 
     public Damage(double amountDamage, DamageType damageType, double damagePercent) {

@@ -80,7 +80,10 @@ public class DamageCalculator {
         DamageList damages = new DamageList();
 
         for (int i = 0; i < attackList.size(); i++) {
-            damages.add(new Damage(attackList.get(i).getAmountDamage(), attackList.get(i).getDamageType()));
+            damages.add(new Damage(
+                    attackList.get(i).getAmountDamage(), attackList.get(i).getDamageType(),
+                    attackList.get(i).getDamagePercent())
+            );
             for (int j = 0; j < weakResDL.size(); j++) {
                 if (damages.get(i).getDamageType() == weakResDL.get(j).getDamageType()) {
                     //System.out.println("DamageType = " + weakResDL.get(j).getDamageType());

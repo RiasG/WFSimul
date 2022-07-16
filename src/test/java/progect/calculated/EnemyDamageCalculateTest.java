@@ -44,16 +44,20 @@ public class EnemyDamageCalculateTest {
 
         Health health = new Health(1000, weakResHealth);
         Armor armor = new Armor(900, weakResArmor);
-        Shield shield = new Shield(550,weakResShield);
+        Shield shield = new Shield(100,weakResShield);
 
         EnemyLifeCondition enemyLife = new EnemyLifeCondition(health, armor, shield);
 
         Attack attack = new PrimaryAttack(damageList,3,1,1,2);
 
-        EnemyDamageCalculate.calculateEnemyDamage(enemyLife,attack.getAttackDamageList());
+        damageList = EnemyDamageCalculate.calculateEnemyDamage(enemyLife,attack.getAttackDamageList());
 
         for (Damage d:attack.getAttackDamageList()){
             System.out.println("Attack DL = " + d.getAmountDamage());
+        }
+
+        for (Damage d:damageList){
+            System.out.println("DL = " + d.getAmountDamage());
         }
 
         System.out.println("Enemy shield = " + enemyLife.getShield().getHitPoint());
