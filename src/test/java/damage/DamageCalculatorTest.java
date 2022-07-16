@@ -18,21 +18,25 @@ public class DamageCalculatorTest {
     public void testCalculateCrit() {
         double cChance = 1;
         double cMult = 2;
+        System.out.println("Crit");
         System.out.println(calculateCritMult(cChance,cMult));
-        System.out.println(cChance + " "+ cMult);
+        System.out.println(cChance + " " + cMult);
 
         DamageList damageList = new DamageList();
         damageList.add(new Damage(40, DamageType.VIRAL));
         damageList.add(new Damage(10,DamageType.RADIATION));
         damageList.add(new Damage(25,DamageType.COLD));
 
-        System.out.println();
+
+        System.out.println("DList");
         for (Damage d:damageList) {
             System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
 
         }
+
         damageList = calculateCriticalDamageList(damageList,cChance,cMult);
 
+        System.out.println("Critical DList");
         for (Damage d:damageList) {
             System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
 
@@ -50,6 +54,7 @@ public class DamageCalculatorTest {
         Health health = new Health(1000, weakRes);
         damageList = DamageCalculator.calculateWeakResDamage(damageList, health.getWeaknessResistanceList());
 
+        System.out.println("WeakRes Crit DList");
         for (Damage d:damageList) {
             System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
 

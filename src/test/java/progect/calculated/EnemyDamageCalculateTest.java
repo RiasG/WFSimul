@@ -8,8 +8,6 @@ import progect.enemy.*;
 import progect.weapon.attacks.Attack;
 import progect.weapon.attacks.PrimaryAttack;
 
-import static org.junit.Assert.*;
-
 public class EnemyDamageCalculateTest {
 
     @Test
@@ -46,13 +44,13 @@ public class EnemyDamageCalculateTest {
 
         Health health = new Health(1000, weakResHealth);
         Armor armor = new Armor(900, weakResArmor);
-        Shield shield = new Shield(1550,weakResShield);
+        Shield shield = new Shield(550,weakResShield);
 
         EnemyLifeCondition enemyLife = new EnemyLifeCondition(health, armor, shield);
 
         Attack attack = new PrimaryAttack(damageList,3,1,1,2);
 
-        EnemyDamageCalculate.calculateDamageForEnemy(enemyLife,attack);
+        EnemyDamageCalculate.calculateEnemyDamage(enemyLife,attack.getAttackDamageList());
 
         for (Damage d:attack.getAttackDamageList()){
             System.out.println("Attack DL = " + d.getAmountDamage());
