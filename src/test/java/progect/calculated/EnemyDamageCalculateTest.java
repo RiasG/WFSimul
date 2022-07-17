@@ -39,12 +39,12 @@ public class EnemyDamageCalculateTest {
         weakResShield.add(new Damage(-0.5, DamageType.COLD));
         weakResShield.add(new Damage(-0.25, DamageType.PUNCTURE));
         weakResShield.add(new Damage(0.5, DamageType.RADIATION));
-        weakResShield.add(new Damage(0.25, DamageType.SLASH));
+        weakResShield.add(new Damage(0.5, DamageType.SLASH));
 
 
         Health health = new Health(1000, weakResHealth);
         Armor armor = new Armor(900, weakResArmor);
-        Shield shield = new Shield(100,weakResShield);
+        Shield shield = new Shield(0,weakResShield);
 
         EnemyLifeCondition enemyLife = new EnemyLifeCondition(health, armor, shield);
 
@@ -52,6 +52,7 @@ public class EnemyDamageCalculateTest {
 
         damageList = EnemyDamageCalculate.calculateEnemyDamage(enemyLife,attack.getAttackDamageList());
 
+        System.out.println("AFTER ATTACK-------------");
         for (Damage d:attack.getAttackDamageList()){
             System.out.println("Attack DL = " + d.getAmountDamage());
         }

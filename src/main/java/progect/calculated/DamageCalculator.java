@@ -86,6 +86,27 @@ public class DamageCalculator {
             );
             for (int j = 0; j < weakResDL.size(); j++) {
                 if (damages.get(i).getDamageType() == weakResDL.get(j).getDamageType()) {
+                    System.out.println("weakRes DamageType = " + weakResDL.get(j).getAmountDamage());
+                    damages.get(i).setAmountDamage(
+                            damages.get(i).getAmountDamage() * (1 - weakResDL.get(j).getAmountDamage())
+                    );
+                    System.out.println("Damage = " + damages.get(i).getAmountDamage());
+                }
+            }
+        }
+        return damages;
+    }
+
+   /* public static DamageList calculateReturnWeakResDamage(DamageList attackList, DamageList weakResDL) {
+        DamageList damages = new DamageList();
+
+        for (int i = 0; i < attackList.size(); i++) {
+            damages.add(new Damage(
+                    attackList.get(i).getAmountDamage(), attackList.get(i).getDamageType(),
+                    attackList.get(i).getDamagePercent())
+            );
+            for (int j = 0; j < weakResDL.size(); j++) {
+                if (damages.get(i).getDamageType() == weakResDL.get(j).getDamageType()) {
                     //System.out.println("DamageType = " + weakResDL.get(j).getDamageType());
                     damages.get(i).setAmountDamage(
                             damages.get(i).getAmountDamage() * (1 - weakResDL.get(j).getAmountDamage())
@@ -95,7 +116,7 @@ public class DamageCalculator {
             }
         }
         return damages;
-    }
+    }*/
 
    /* public static DamageList calculateShieldDamage(DamageList attackList, HitPoint hitPoint) {
         DamageList damages = new DamageList();
@@ -120,22 +141,33 @@ public class DamageCalculator {
 
     public static DamageList calculateArmoredWeakResDamage(DamageList attackList, DamageList weakResDL, double armorHP){
         DamageList damages = new DamageList();
-
+        double resist;
         for (int i = 0; i < attackList.size(); i++) {
-            damages.add(new Damage(attackList.get(i).getAmountDamage(), attackList.get(i).getDamageType()));
+            damages.add(new Damage(
+                    attackList.get(i).getAmountDamage(), attackList.get(i).getDamageType(),
+                    attackList.get(i).getDamagePercent())
+            );
             for (int j = 0; j < weakResDL.size(); j++){
                 if (damages.get(i).getDamageType() == weakResDL.get(j).getDamageType()){
                     //System.out.println("DamageType = " + weakResDL.get(j).getDamageType());
                     //double damage = damages.get(i).getAmountDamage();
-                    double weakness = weakResDL.get(j).getAmountDamage();
+                    double weakRes = weakResDL.get(j).getAmountDamage();
+                    System.out.println("WeakRes = " + weakRes);
                     double armHP = armorHP;
-                    armHP = armHP * (1 + weakness);
-                    //System.out.println("ArmHP = " + armHP);
-                    double resist = calculateArmorResist(armHP);
-                    //System.out.println("Resist = " + resist);
+                    armHP = armHP * (1 + weakRes);
+                    System.out.println("ArmHP = " + armHP);
+                    resist = calculateArmorResist(armHP);
+                    System.out.println("Resist = " + resist);
 
                     damages.get(i).setAmountDamage(damages.get(i).getAmountDamage() * (1 - resist));
-                    //System.out.println("Damage = " + damages.get(i).getAmountDamage());
+                    System.out.println("Damage = " + damages.get(i).getAmountDamage());
+                } else{
+                    resist = calculateArmorResist(armorHP);
+                    System.out.println("------------Resist = " + resist);
+                    System.out.println(damages.get(i).getAmountDamage());
+                    damages.get(i).setAmountDamage(damages.get(i).getAmountDamage() * (1 - resist));
+                    System.out.println("----------Damage = " + damages.get(i).getAmountDamage());
+
                 }
             }
         }

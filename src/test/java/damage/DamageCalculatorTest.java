@@ -68,9 +68,11 @@ public class DamageCalculatorTest {
     @Test
     public void testCalculateHealthDamage() {
         DamageList damageList = new DamageList();
-        damageList.add(new Damage(100, DamageType.VIRAL));
+        damageList.add(new Damage(100, DamageType.TOXIC));
         damageList.add(new Damage(100, DamageType.CORROSIVE));
         damageList.add(new Damage(100, DamageType.RADIATION));
+        damageList.add(new Damage(100, DamageType.GAS));
+        damageList.add(new Damage(100, DamageType.VIRAL));
         damageList.add(new Damage(100, DamageType.SLASH));
 
 
@@ -90,9 +92,9 @@ public class DamageCalculatorTest {
         for (Damage d: dL) {
             System.out.println(d.getAmountDamage());
         }
-        for (Damage d: damageList) {
-            System.out.println(d.getAmountDamage());
-        }
+//        for (Damage d: damageList) {
+//            System.out.println(d.getAmountDamage());
+//        }
         for (Damage d: dL) {
             health.takeDamage(d.getAmountDamage());
         }
@@ -117,7 +119,10 @@ public class DamageCalculatorTest {
 
         Armor armor = new Armor(1000, weakResist);
 
-        DamageList dList = new DamageList(DamageCalculator.calculateArmoredWeakResDamage(damageList, armor.getWeaknessResistanceList(),armor.getHitPoint()));
+        DamageList dList = new DamageList(
+                DamageCalculator.calculateArmoredWeakResDamage(
+                        damageList, armor.getWeaknessResistanceList(),armor.getHitPoint())
+        );
 
 
         System.out.println("New DamageList");
@@ -125,10 +130,10 @@ public class DamageCalculatorTest {
             System.out.println(d.getAmountDamage());
         }
 
-        System.out.println("Old DamageList");
-        for (Damage d: damageList) {
-            System.out.println(d.getAmountDamage());
-        }
+//        System.out.println("Old DamageList");
+//        for (Damage d: damageList) {
+//            System.out.println(d.getAmountDamage());
+//        }
 
         Health health = new Health(1000, new DamageList());
         for (Damage d: dList ) {
