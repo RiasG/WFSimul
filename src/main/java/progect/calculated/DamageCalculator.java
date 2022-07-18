@@ -8,29 +8,14 @@ import progect.enemy.HitPoint;
 public class DamageCalculator {
 
     public static DamageList multiplyDamageList(DamageList dList, double mult){
-//        DamageList damages = dList;
-//        for (int i = 0; i < damages.size(); i++) {
-//            damages.get(i).setAmountDamage(damages.get(i).getAmountDamage() * mult);
-//        }
         DamageList damages = new DamageList();
         for (Damage d: dList) {
             Damage damage = new Damage(d.getAmountDamage() * mult, d.getDamageType());
             damages.add(damage);
-            
         }
-        
         return damages;
     }
 
-    /*public static DamageList calculateDamageAfterResist(DamageList dList, double resist){
-        DamageList damages = new DamageList();
-        for (Damage d: dList) {
-            Damage damage = new Damage(d.getAmountDamage() * resist, d.getDamageType());
-            damage.setAmountDamage(d.getAmountDamage() - damage.getAmountDamage());
-            damages.add(damage);
-        }
-        return damages;
-    }*/
 
     public static double calculateCritMult(double critChance, double critMult){
         double cMult = critMult;

@@ -1,30 +1,30 @@
 package progect.weapon;
 
+import progect.calculated.DamageCalculator;
+import progect.damage.DamageList;
 import progect.weapon.attacks.*;
 import progect.weapon.characters.CharactersMelee;
 import progect.weapon.characters.Characters;
+import progect.weapon.exceprions.NullCharactersException;
 
 public class MeleeWeapon extends Weapon implements AttackMeleeCreator{
     private CharactersMelee charactersMelee;
 
 
-    public MeleeWeapon(Characters characters) {
-        super(characters);
-
-        //TODO выучить наконец исключения
-        try {
-            this.charactersMelee = (CharactersMelee) characters;
-        }catch (ClassCastException cnfx){
-            cnfx.printStackTrace();
-        }
-
-    }
-
     public MeleeWeapon() {
     }
+    public MeleeWeapon(Characters characters) {
+        super(characters);
+        this.charactersMelee = (CharactersMelee) characters;
+    }
+
+
 
     @Override
-    public Attack attack() {
+    public Attack attack () throws NullCharactersException{
+        if (charactersMelee == null){
+            throw new NullCharactersException("Отсутствуют хараткеристики оружия");
+        }
         return new MeleeAttack(
                 charactersMelee.getDamageListWithMulti(charactersMelee.getAttackMulti()),
                 charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
@@ -33,7 +33,7 @@ public class MeleeWeapon extends Weapon implements AttackMeleeCreator{
     }
 
     @Override
-    public Attack heavyAttack(){
+    public Attack heavyAttack() throws NullCharactersException{
         return new HeavyAttackMelee(
                 charactersMelee.getDamageListWithMulti(charactersMelee.getHeavyAttackMulti()),
                 charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
@@ -61,26 +61,32 @@ public class MeleeWeapon extends Weapon implements AttackMeleeCreator{
 
    @Override
     public Attack radialLightAttack(){
-        return new RadialMeleeAttack(
-                charactersMelee.getDamageListWithMulti(charactersMelee.getRadialAttackMulti()),
-                charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
+       DamageList dList = DamageCalculator.multiplyDamageList(
+               charactersMelee.getRadialAttackDamage(), charactersMelee.getRadialAttackMulti()
+       );
+        return new RadialMeleeAttack(dList, charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
                 charactersMelee.getStatusChance(), charactersMelee.getRadialAttackRadius()
         );
     }
 
     @Override
     public Attack heavyRadialAttack(){
+        DamageList dList = DamageCalculator.multiplyDamageList(
+                charactersMelee.getRadialAttackDamage(), charactersMelee.getHeavyRadialAttackMulti()
+        );
         return new HeavyRadialMeleeAttack(
-                charactersMelee.getDamageListWithMulti(charactersMelee.getRadialAttackMulti()),
-                charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
+                dList, charactersMelee.getCriticalMultiplier(), charactersMelee.getCriticalChance(),
                 charactersMelee.getStatusChance(), charactersMelee.getHeavyRadialAttackRadius()
         );
     }
 
     @Override
     public Attack slideAttack(){
-        return new SlideAttack(charactersMelee.getDamageListWithMulti(charactersMelee.getRadialAttackMulti()),
-                charactersMelee.getCriticalMultiplier(),
+
+        DamageList dList = DamageCalculator.multiplyDamageList(
+                charactersMelee.getSlideAttackDamage(), charactersMelee.getSlideAttackMulti()
+        );
+        return new SlideAttack(dList, charactersMelee.getCriticalMultiplier(),
                 charactersMelee.getCriticalChance(), charactersMelee.getStatusChance()
         );
     }

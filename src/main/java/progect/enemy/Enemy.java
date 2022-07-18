@@ -6,8 +6,17 @@ import progect.weapon.attacks.PrimaryAttack;
 
 public class Enemy {
    private EnemyLifeCondition enemyLifeCondition;
-
    private int enemyLevel;
+
+   public Enemy() {
+   }
+
+
+   public Enemy(EnemyLifeCondition enemyLifeCondition, int enemyLevel) {
+      this.enemyLifeCondition = enemyLifeCondition;
+      this.enemyLevel = enemyLevel;
+   }
+
    public Enemy(EnemyLifeCondition enemyLifeCondition) {
       this.enemyLifeCondition = enemyLifeCondition;
    }

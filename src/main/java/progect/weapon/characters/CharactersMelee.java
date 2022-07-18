@@ -12,13 +12,13 @@ public class CharactersMelee extends Characters{
      */
     private double radialAttackRadius;
     private double heavyRadialAttackRadius;
-    private Damage radialAttackDamage;
+    private DamageList radialAttackDamage;
 
     /**
      * slide attack
      */
 
-    private Damage slideAttackDamage; // у слайд атаки зачастую тип урона
+    private DamageList slideAttackDamage; // у слайд атаки зачастую свой тип урона
 
     /**
      * Множители атак
@@ -51,8 +51,8 @@ public class CharactersMelee extends Characters{
     public CharactersMelee(String name, double attackSpeed, double disposition, DamageList damageList,
                            double criticalChance, double criticalMultiplier, double statusChance,
                            NoiseLevel noiseLevel, double radialAttackRadius,
-                           double heavyRadialAttackRadius, Damage radialAttackDamage,
-                           Damage slideAttackDamage, double attackMulti, double heavyAttackMulti,
+                           double heavyRadialAttackRadius, DamageList radialAttackDamage,
+                           DamageList slideAttackDamage, double attackMulti, double heavyAttackMulti,
                            double slideAttackMulti, double heavyRadialAttackMulti,
                            double radialAttackMulti, double slamAttackMulti, double slamHeavyAttackMulti,
                            double windUp, int blockAngle, int comboDuration, double followThrough) {
@@ -96,8 +96,6 @@ public class CharactersMelee extends Characters{
 
     /**
      *
-     * @param mult
-     * @return
      *
      * Все атаки ближнего боя имеют множитель урона, который берется из типа атаки, например тяжелой атаки или
      * удара по земле, зависит от типа оружия, но есть и уникальные. Так же стандартные атаки могут иметь множитель урона,
@@ -138,7 +136,7 @@ public class CharactersMelee extends Characters{
         return heavyRadialAttackMulti;
     }
 
-    public Damage getRadialAttackDamage() {
+    public DamageList getRadialAttackDamage() {
         return radialAttackDamage;
     }
 
@@ -146,7 +144,7 @@ public class CharactersMelee extends Characters{
         return slideAttackMulti;
     }
 
-    public Damage getSlideAttackDamage() {
+    public DamageList getSlideAttackDamage() {
         return slideAttackDamage;
     }
 
@@ -170,11 +168,11 @@ public class CharactersMelee extends Characters{
         this.heavyRadialAttackRadius = heavyRadialAttackRadius;
     }
 
-    public void setRadialAttackDamage(Damage radialAttackDamage) {
+    public void setRadialAttackDamage(DamageList radialAttackDamage) {
         this.radialAttackDamage = radialAttackDamage;
     }
 
-    public void setSlideAttackDamage(Damage slideAttackDamage) {
+    public void setSlideAttackDamage(DamageList slideAttackDamage) {
         this.slideAttackDamage = slideAttackDamage;
     }
 

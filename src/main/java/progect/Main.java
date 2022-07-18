@@ -4,6 +4,7 @@ import progect.damage.Damage;
 import progect.damage.DamageList;
 import progect.damage.DamageType;
 import progect.weapon.MeleeWeapon;
+import progect.weapon.exceprions.NullCharactersException;
 import progect.weapon.utility.NoiseLevel;
 import progect.weapon.PrimaryWeapon;
 import progect.weapon.Weapon;
@@ -21,14 +22,20 @@ public class Main {
         Characters characters = new CharactersPrimary("Karak", 2,45, new DamageList(), 0.3,2,0.4,
                 NoiseLevel.NOISE, 1,0.5,30,500);
         characters.getDamageList().add(new Damage(23, DamageType.CORROSIVE));
+
+
+        //characters = null;
         Weapon weapon = new PrimaryWeapon(characters);
 
+            Attack attack = weapon.attack();
+            weapon.attack();
+            System.out.println(weapon.attack());
+            System.out.println(attack.getAttackDamageList().getFirst().getDamageType());
+            System.out.println(((PrimaryAttack)attack).getMultiShot());
 
-        System.out.println(weapon.attack());
-        Attack attack = weapon.attack();
 
-        System.out.println(attack.getAttackDamageList().getFirst().getDamageType());
-        System.out.println(((PrimaryAttack)attack).getMultiShot());
+
+
 
         CharactersMelee charactersMelee = new CharactersMelee();
         charactersMelee.setHeavyAttackMulti(4);

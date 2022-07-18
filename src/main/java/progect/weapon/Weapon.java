@@ -2,6 +2,7 @@ package progect.weapon;
 
 import progect.weapon.characters.Characters;
 import progect.weapon.attacks.Attack;
+import progect.weapon.exceprions.NullCharactersException;
 
 public abstract class Weapon implements AttackCreator{
 
@@ -14,8 +15,10 @@ public abstract class Weapon implements AttackCreator{
         this.characters = characters;
     }
 
-    public abstract Attack attack();
-
+    @Override
+    public Attack attack() throws NullCharactersException {
+        return null;
+    }
 
     public Characters getCharacters() {
         return characters;
