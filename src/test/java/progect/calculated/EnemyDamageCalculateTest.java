@@ -13,28 +13,25 @@ public class EnemyDamageCalculateTest {
     @Test
     public void enemyDamageCalculateTest(){
         DamageList damageList = new DamageList();
-        damageList.add(new Damage(100, DamageType.VIRAL));
-        damageList.add(new Damage(100, DamageType.CORROSIVE));
-        damageList.add(new Damage(100, DamageType.RADIATION));
-        damageList.add(new Damage(100, DamageType.SLASH));
+        damageList.add(new Damage(1000, DamageType.VIRAL));
+        damageList.add(new Damage(1000, DamageType.CORROSIVE));
+        damageList.add(new Damage(1000, DamageType.RADIATION));
+        damageList.add(new Damage(1000, DamageType.SLASH));
 
 
         DamageList weakResHealth = new DamageList();
-
         weakResHealth.add(new Damage(-0.75, DamageType.VIRAL));
         weakResHealth.add(new Damage(-0.25, DamageType.SLASH));
         weakResHealth.add(new Damage(0.75, DamageType.GAS));
         weakResHealth.add(new Damage(0.5, DamageType.RADIATION));
 
         DamageList weakResArmor = new DamageList();
-
         weakResArmor.add(new Damage(-0.75, DamageType.CORROSIVE));
         weakResArmor.add(new Damage(-0.25, DamageType.COLD));
         weakResArmor.add(new Damage(0.75, DamageType.VIRAL));
         weakResArmor.add(new Damage(0.5, DamageType.SLASH));
 
         DamageList weakResShield = new DamageList();
-
         weakResShield.add(new Damage(-0.75, DamageType.MAGNETIC));
         weakResShield.add(new Damage(-0.5, DamageType.COLD));
         weakResShield.add(new Damage(-0.25, DamageType.PUNCTURE));
@@ -42,7 +39,7 @@ public class EnemyDamageCalculateTest {
         weakResShield.add(new Damage(0.5, DamageType.SLASH));
 
 
-        Health health = new Health(1000, weakResHealth);
+        Health health = new Health(500, weakResHealth);
         Armor armor = new Armor(900, weakResArmor);
         Shield shield = new Shield(0,weakResShield);
 
@@ -62,6 +59,8 @@ public class EnemyDamageCalculateTest {
         }
 
         System.out.println("Enemy shield = " + enemyLife.getShield().getHitPoint());
+        System.out.println("Enemy armor = " + enemyLife.getArmor().getHitPoint());
+        System.out.println("Enemy health = " + enemyLife.getHealth().getHitPoint());
 
 
     }

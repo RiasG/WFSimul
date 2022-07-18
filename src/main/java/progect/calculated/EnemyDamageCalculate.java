@@ -17,8 +17,10 @@ public class EnemyDamageCalculate extends DamageCalculator{
         Health health = life.getHealth();
         Armor armor = life.getArmor();
         Shield shield = life.getShield();
-        damageList = calculateDamagePercent(attackDamageList);
-        for (Damage d : attackDamageList) {damageList.add(new Damage(d));}
+
+        for (Damage d : attackDamageList) {
+            damageList.add(new Damage(d));
+        }
 
         if (damageList.getDamageSum() > 0){
             if (shield != null && shield.getHitPoint() > 0){
@@ -27,20 +29,19 @@ public class EnemyDamageCalculate extends DamageCalculator{
                     System.out.println("DPercent " + d.getDamagePercent()+ " " + d.getAmountDamage());
                 }
                 damageList = calculateWeakResDamage(attackDamageList, shield.getWeaknessResistanceList());
+                damageList = calculateDamagePercent(damageList);
 
-                System.out.println("WeakRes DL");
+                System.out.println("DL after WearRes Calculated");
                 for (Damage d: damageList) {
                     System.out.println(d.getAmountDamage() + " " + d.getDamageType().name() + " " + d.getDamagePercent());
                 }
+
                 damageList = calculateTakeDamage(damageList, shield);
-                System.out.println("DL after attack");
+                System.out.println("DL after shield attack");
                 for (Damage d: damageList) {
                     System.out.println(d.getAmountDamage() + " " + d.getDamageType().name() + " " + d.getDamagePercent());
                 }
 
-//            for (Damage d: damageList) {
-//                shield.takeDamage(d.getAmountDamage());
-//            }
 
                 System.out.println("Shield HP " + shield.getHitPoint());
         }else {
@@ -49,43 +50,52 @@ public class EnemyDamageCalculate extends DamageCalculator{
 
                         if(armor != null && armor.getHitPoint() > 0){
                             System.out.println("ArmHP = " + calculateArmorResist(armor.getHitPoint()));
+                            System.out.println("Health = " + health.getHitPoint());
+
                             damageList = calculateArmoredWeakResDamage(damageList, armor.getWeaknessResistanceList(), armor.getHitPoint());
-                            System.out.println("DL weakResArm");
+                            System.out.println("DL after weakResArm calculate");
                             for (Damage d: damageList) {
                                 System.out.println(d.getAmountDamage() + " " + d.getDamageType().name() + " " + d.getDamagePercent());
                             }
+                            System.out.println("Damage summa = " + damageList.getDamageSum());
+
                             damageList = calculateWeakResDamage(damageList, health.getWeaknessResistanceList());
-                            System.out.println("DL weakResHealth");
+                            damageList = calculateDamagePercent(damageList);
+                            System.out.println("DL after weakResHealth calculate");
                             for (Damage d: damageList) {
                                 System.out.println(d.getAmountDamage() + " " + d.getDamageType().name() + " " + d.getDamagePercent());
                             }
+                            System.out.println("Damage summa = " + damageList.getDamageSum());
+
                             damageList = calculateTakeDamage(damageList, health);
                             System.out.println("After TakeDamage");
                             for (Damage d: damageList) {
                                 System.out.println(d.getAmountDamage() + " " + d.getDamageType().name() + " " + d.getDamagePercent());
                             }
+                            System.out.println("Damage summa = " + damageList.getDamageSum());
                         } else{
-                            System.out.println("Health");
+                            System.out.println("Health = " + health.getHitPoint());
+
                             damageList = calculateWeakResDamage(damageList, health.getWeaknessResistanceList());
-                            System.out.println("DL weakResHealth");
+                            damageList = calculateDamagePercent(damageList);
+                            System.out.println("DL after weakResHealth calculate");
                             for (Damage d: damageList) {
                                 System.out.println(d.getAmountDamage() + " " + d.getDamageType().name() + " " + d.getDamagePercent());
                             }
+                            System.out.println("Damage summa = " + damageList.getDamageSum());
+
                             damageList = calculateTakeDamage(damageList, health);
-                            System.out.println("After TakeDamage");
+                            System.out.println("DL After TakeDamage");
                             for (Damage d: damageList) {
                                 System.out.println(d.getAmountDamage() + " " + d.getDamageType().name() + " " + d.getDamagePercent());
                             }
+                            System.out.println("Damage summa = " + damageList.getDamageSum());
                         }
 
-                        System.out.println("Health  = " + health.getHitPoint());
-
+                        System.out.println("Health after attack  = " + health.getHitPoint());
                     }
                 }
-
-
-        }
-
+            }
         }
         return damageList;
 
@@ -98,7 +108,6 @@ public class EnemyDamageCalculate extends DamageCalculator{
 
         double amountDamage;
         for (Damage d : damageList){
-            System.out.println(d.getDamagePercent());
             damages.add(new Damage(d));
         }
         System.out.println("DL in takeDamage");
