@@ -8,7 +8,8 @@ public class Damage {
     private double damagePercent;
 
 
-
+    public Damage() {
+    }
 
     public Damage(double amountDamage, DamageType damageType) {
         this.amountDamage = amountDamage;

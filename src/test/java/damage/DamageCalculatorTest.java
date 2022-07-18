@@ -90,7 +90,7 @@ public class DamageCalculatorTest {
         DamageList dL = new DamageList(DamageCalculator.calculateWeakResDamage(damageList, health.getWeaknessResistanceList()));
 
         for (Damage d: dL) {
-            System.out.println(d.getAmountDamage());
+            System.out.println(d.getAmountDamage() + " " + d.getDamageType() + " " + d.getDamagePercent());
         }
 //        for (Damage d: damageList) {
 //            System.out.println(d.getAmountDamage());
@@ -106,8 +106,10 @@ public class DamageCalculatorTest {
     public void testCalculateArmorDamage(){
         DamageList damageList = new DamageList();
         damageList.add(new Damage(100, DamageType.VIRAL));
+        damageList.add(new Damage(100, DamageType.GAS));
         damageList.add(new Damage(100,DamageType.CORROSIVE));
         damageList.add(new Damage(100,DamageType.RADIATION));
+        damageList.add(new Damage(100,DamageType.TOXIC));
         damageList.add(new Damage(100,DamageType.SLASH));
 
 
