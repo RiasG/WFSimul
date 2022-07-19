@@ -4,8 +4,7 @@ import progect.weapon.characters.Characters;
 import progect.weapon.attacks.Attack;
 import progect.weapon.exceprions.NullCharactersException;
 
-public abstract class Weapon implements AttackCreator{
-
+public class Weapon implements AttackCreator{
     private Characters characters;
 
     public Weapon() {

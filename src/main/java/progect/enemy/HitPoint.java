@@ -2,7 +2,7 @@ package progect.enemy;
 
 import progect.damage.DamageList;
 
-public abstract class HitPoint {
+public class HitPoint {
     private double hitPoint;
     private DamageList weaknessResistanceList;
 

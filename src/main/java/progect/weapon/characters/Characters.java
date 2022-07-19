@@ -30,6 +30,13 @@ public abstract class Characters {
     }
 
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public double getAttackSpeed() {
         return attackSpeed;

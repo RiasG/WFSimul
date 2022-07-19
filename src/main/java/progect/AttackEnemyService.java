@@ -5,8 +5,7 @@ import progect.calculated.EnemyDamageCalculate;
 import progect.damage.DamageList;
 import progect.enemy.Enemy;
 import progect.enemy.EnemyLifeCondition;
-import progect.weapon.PrimaryWeapon;
-import progect.weapon.Weapon;
+import progect.weapon.*;
 import progect.weapon.attacks.Attack;
 import progect.weapon.attacks.PrimaryAttack;
 
@@ -23,6 +22,7 @@ public class AttackEnemyService {
     }
 
     public void doAttackPrimary(){
+
         PrimaryWeapon primaryWeapon = (PrimaryWeapon) weapon;
         PrimaryAttack weaponAttack = (PrimaryAttack) primaryWeapon.attack();
         DamageList attackDamageList = weaponAttack.getAttackDamageList();
