@@ -9,7 +9,10 @@ public class DamageList extends LinkedList<Damage> {
     }
 
     public DamageList(Collection<? extends Damage> c) {
-        super(c);
+        for (Damage d : c) {
+            super.add(new Damage(d));
+        }
+
     }
 
     public double getDamageSum(){
@@ -22,9 +25,21 @@ public class DamageList extends LinkedList<Damage> {
         return sum;
     }
 
+    public void show(){
+        for (Damage d: this) {
+            System.out.println("Amount damage = " + d.getAmountDamage() + " " + "Damage Type = " + d.getDamageType() + " " +
+                    "Damage Percent = " + d.getDamagePercent()
+            );
+        }
+    }
 
+    @Override
+    public boolean addAll(Collection<? extends Damage> c) {
+        for (Damage d : c) {
+            super.add(new Damage(d));
+        }
 
-
-
+        return true;
+    }
 
 }

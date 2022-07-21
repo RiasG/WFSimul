@@ -32,6 +32,8 @@ public class Enemy {
    public void takeAttack(Attack attack){
       DamageList damageList = new DamageList();
       if (attack instanceof PrimaryAttack){
+         damageList = attack.getAttackDamageList();
+
 
       }
 

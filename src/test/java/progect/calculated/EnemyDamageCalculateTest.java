@@ -12,6 +12,8 @@ public class EnemyDamageCalculateTest {
 
     @Test
     public void enemyDamageCalculateTest(){
+
+
         DamageList damageList = new DamageList();
         damageList.add(new Damage(1000, DamageType.VIRAL));
         damageList.add(new Damage(1000, DamageType.CORROSIVE));

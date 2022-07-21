@@ -1,29 +1,30 @@
 package progect.calculated;
 
+import org.slf4j.IMarkerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
 import progect.damage.Damage;
 import progect.damage.DamageList;
 import progect.enemy.*;
 
 public class EnemyDamageCalculate extends DamageCalculator{
-    private EnemyLifeCondition enemyLifeCondition;
-    private DamageList damageList;
+    private static EnemyLifeCondition enemyLifeCondition;
+    private static DamageList damageList;
     private static final Logger LOGGER = LoggerFactory.getLogger(EnemyDamageCalculate.class);
 
     public EnemyDamageCalculate() {
     }
 
-
     public static DamageList calculateEnemyDamage(EnemyLifeCondition life, DamageList attackDamageList){
-        DamageList damageList = new DamageList();
+        DamageList damageList = new DamageList(attackDamageList);
         Health health = life.getHealth();
         Armor armor = life.getArmor();
         Shield shield = life.getShield();
 
-        for (Damage d : attackDamageList) {
-            damageList.add(new Damage(d));
-        }
+//        for (Damage d : attackDamageList) {
+//            damageList.add(new Damage(d));
+//        }
 
         if (damageList.getDamageSum() > 0){
             if (shield != null && shield.getHitPoint() > 0){
@@ -51,7 +52,6 @@ public class EnemyDamageCalculate extends DamageCalculator{
             if(health != null && health.getHitPoint() > 0){
                 if(armor != null && armor.getHitPoint() > 0){
                     LOGGER.info("ArmHP = " + calculateArmorResist(armor.getHitPoint()));
-
                     damageList = calculateArmoredWeakResDamage(damageList, armor.getWeaknessResistanceList(), armor.getHitPoint());
                     LOGGER.info("DL after weakResArm calculate");
                     for (Damage d: damageList) {

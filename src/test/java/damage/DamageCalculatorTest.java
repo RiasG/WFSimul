@@ -29,18 +29,20 @@ public class DamageCalculatorTest {
 
 
         System.out.println("DList");
-        for (Damage d:damageList) {
-            System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
-
-        }
+        damageList.show();
+//        for (Damage d:damageList) {
+//            System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
+//
+//        }
 
         damageList = calculateCriticalDamageList(damageList,cChance,cMult);
 
         System.out.println("Critical DList");
-        for (Damage d:damageList) {
-            System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
-
-        }
+        damageList.show();
+//        for (Damage d:damageList) {
+//            System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
+//
+//        }
 
 
 

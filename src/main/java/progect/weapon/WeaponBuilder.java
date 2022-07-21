@@ -10,7 +10,6 @@ import progect.weapon.utility.NoiseLevel;
 public class WeaponBuilder {
     Weapon weapon;
 
-
     WeaponBuilder(){
         Characters characters = new CharactersPrimary();
         characters.setName("PrimaryWeapon");
@@ -29,6 +28,13 @@ public class WeaponBuilder {
         characters.setDisposition(1.2);
         characters.setStatusChance(0.3);
         weapon.setCharacters(characters);
+
+    }
+
+    public Weapon buildWeapon(Characters characters){
+
+
+        return null;
 
     }
 

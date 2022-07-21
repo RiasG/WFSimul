@@ -1,0 +1,9 @@
+CREATE TABLE ws_weapons_primary
+(
+    weapon_id SERIAL,
+    weapon_name varchar(20) not null,
+    attackspeed double not null,
+    disposition double,
+    damage_list_id integer not null,
+    
+);

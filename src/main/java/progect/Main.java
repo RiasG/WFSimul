@@ -36,7 +36,6 @@ public class Main {
 
 
 
-
         CharactersMelee charactersMelee = new CharactersMelee();
         charactersMelee.setHeavyAttackMulti(4);
         charactersMelee.setDamageList(new DamageList());
