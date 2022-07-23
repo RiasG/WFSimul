@@ -1,9 +1,7 @@
 package progect.calculated;
 
-import org.slf4j.IMarkerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.Marker;
 import progect.damage.Damage;
 import progect.damage.DamageList;
 import progect.enemy.*;
@@ -29,22 +27,16 @@ public class EnemyDamageCalculate extends DamageCalculator{
         if (damageList.getDamageSum() > 0){
             if (shield != null && shield.getHitPoint() > 0){
                 System.out.println("Shield");
-                for (Damage d: damageList) {
-                    System.out.println("DPercent " + d.getDamagePercent()+ " " + d.getAmountDamage());
-                }
+
                 damageList = calculateWeakResDamage(attackDamageList, shield.getWeaknessResistanceList());
                 damageList = calculateDamagePercent(damageList);
 
                 System.out.println("DL after WearRes Calculated");
-                for (Damage d: damageList) {
-                    System.out.println(d.getAmountDamage() + " " + d.getDamageType().name() + " " + d.getDamagePercent());
-                }
+                damageList.show();
 
                 damageList = calculateTakeDamage(damageList, shield);
                 System.out.println("DL after shield attack");
-                for (Damage d: damageList) {
-                    System.out.println(d.getAmountDamage() + " " + d.getDamageType().name() + " " + d.getDamagePercent());
-                }
+                damageList.show();
 
                 System.out.println("Shield HP " + shield.getHitPoint());
         }
@@ -99,9 +91,7 @@ public class EnemyDamageCalculate extends DamageCalculator{
             damages.add(new Damage(d));
         }
         System.out.println("DL in takeDamage");
-        for (Damage d: damages) {
-            System.out.println(d.getAmountDamage() + " " + d.getDamageType().name() + " " + d.getDamagePercent());
-        }
+        damageList.show();
         if (damageSum > 0 && hp > 0){
             if (hp >= damageSum){
                 hitPoint.setHitPoint(hp - damageSum);

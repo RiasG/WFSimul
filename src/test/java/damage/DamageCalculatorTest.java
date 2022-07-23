@@ -57,10 +57,7 @@ public class DamageCalculatorTest {
         damageList = DamageCalculator.calculateWeakResDamage(damageList, health.getWeaknessResistanceList());
 
         System.out.println("WeakRes Crit DList");
-        for (Damage d:damageList) {
-            System.out.println(d.getAmountDamage() +  " " + d.getDamageType().name());
-
-        }
+        damageList.show();
 
 
 

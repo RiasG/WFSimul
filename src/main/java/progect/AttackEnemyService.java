@@ -7,28 +7,24 @@ import progect.enemy.Enemy;
 import progect.enemy.EnemyLifeCondition;
 import progect.weapon.*;
 import progect.weapon.attacks.Attack;
+import progect.weapon.attacks.HeavyAttackMelee;
+import progect.weapon.attacks.MeleeAttack;
 import progect.weapon.attacks.PrimaryAttack;
 
 import java.util.LinkedList;
 
 public class AttackEnemyService {
-    private Enemy enemy;
+    private EnemyLifeCondition enemyLifeCondition;
     private Attack attack;
-    private Weapon weapon;
     private LinkedList<DamageList> damageInformation;
 
 
     public AttackEnemyService() {
     }
 
-    public AttackEnemyService(Enemy enemy, Weapon weapon) {
-        this.enemy = enemy;
-        this.weapon = weapon;
 
-    }
-
-    public AttackEnemyService(Enemy enemy, Attack attack) {
-        this.enemy = enemy;
+    public AttackEnemyService(EnemyLifeCondition enemyLifeCondition, Attack attack) {
+        this.enemyLifeCondition = enemyLifeCondition;
         this.attack = attack;
     }
 
@@ -40,14 +36,14 @@ public class AttackEnemyService {
         double critChance = this.attack.getAttackCritChance();
         double critMult = this.attack.getAttackCritMulti();
         double statusChance = this.attack.getAttackStatusChance();
-
+        EnemyLifeCondition enemyLifeCondition = this.enemyLifeCondition;
 
         if (this.attack instanceof PrimaryAttack){
             //PrimaryWeapon primaryWeapon = (PrimaryWeapon) weapon;
             PrimaryAttack primaryAttack = (PrimaryAttack) this.attack;
 
             DamageList attackDamageList = primaryAttack.getAttackDamageList();
-            EnemyLifeCondition enemyLifeCondition = enemy.getEnemyLifeBar();
+
 
             //attackDamageList = DamageCalculator.calculateCriticalDamageList(attackDamageList,critChance, critMult);
 
@@ -59,13 +55,17 @@ public class AttackEnemyService {
                 EnemyDamageCalculate.calculateEnemyDamage(enemyLifeCondition, bufferDamages);
             }
 
+        } else{
+
+            if (this.attack instanceof MeleeAttack){
+                MeleeAttack meleeAttack = (MeleeAttack) this.attack;
+                DamageList attackDamageList = meleeAttack.getAttackDamageList();
+                attackDamageList = DamageCalculator.calculateCriticalDamageList(attackDamageList, critChance, critMult);
+                EnemyDamageCalculate.calculateEnemyDamage(enemyLifeCondition, attackDamageList);
+
+            }
         }
-
-
-
     }
-
-
 
 
 }

@@ -1,8 +1,8 @@
 package progect.enemy;
 
+import progect.AttackEnemyService;
 import progect.damage.DamageList;
 import progect.weapon.attacks.Attack;
-import progect.weapon.attacks.PrimaryAttack;
 
 public class Enemy {
    private EnemyLifeCondition enemyLifeCondition;
@@ -21,7 +21,7 @@ public class Enemy {
       this.enemyLifeCondition = enemyLifeCondition;
    }
 
-   public EnemyLifeCondition getEnemyLifeBar() {
+   public EnemyLifeCondition enemyLifeCondition() {
       return enemyLifeCondition;
    }
 
@@ -31,12 +31,14 @@ public class Enemy {
 
    public void takeAttack(Attack attack){
       DamageList damageList = new DamageList();
-      if (attack instanceof PrimaryAttack){
-         damageList = attack.getAttackDamageList();
+      AttackEnemyService attackService = new AttackEnemyService(this.enemyLifeCondition(), attack);
+      attackService.takeAttack();
+   }
 
-
-      }
-
+   public boolean isLife(){
+      if (enemyLifeCondition.getHealth().getHitPoint() <= 0){
+         return false;
+      } else return true;
    }
 
 }
